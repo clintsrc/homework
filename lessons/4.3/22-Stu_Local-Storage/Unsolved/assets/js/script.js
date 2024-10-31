@@ -14,6 +14,8 @@ function displayMessage(type, message) {
 
 function renderLastRegistered() {
   // TODO: Retrieve the last email and password and render it to the page
+  userEmailSpan.textContent = localStorage.getItem('localStorageEmail');
+  userPasswordSpan.textContent = localStorage.getItem('localStorageEmailPwd');
 }
 
 signUpButton.addEventListener('click', function (event) {
@@ -28,7 +30,17 @@ signUpButton.addEventListener('click', function (event) {
     displayMessage('error', 'Password cannot be blank');
   } else {
     displayMessage('success', 'Registered successfully');
-
     // TODO: Save email and password to localStorage and render the last registered user
+    localStorage.setItem('localStorageEmail', email);
+    localStorage.setItem('localStorageEmailPwd', password);
+
+    renderLastRegistered();
   }
 });
+
+
+// BONUS:
+// Does data stored using localStorage have an expiration date? What happens when the browser is closed?
+// ref: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+// localStorage data has no expiration time
+// the stored data is saved across browser sessions (it remains after the browser is closed -- like a cookie)
