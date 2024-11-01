@@ -79,6 +79,11 @@ ul {
   color: var(--dark);
 }
 
+.checkbox {
+  display: none;
+  content: "";
+}
+
 /*
   IDs
 */
