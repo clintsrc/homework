@@ -46,6 +46,3 @@ const redirectPage = function (url) {
     redirectURL = url
   }
 };
-
-
-
