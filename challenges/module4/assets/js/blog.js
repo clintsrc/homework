@@ -9,8 +9,8 @@ const btnBackEl = document.querySelector('#back');
 
 // TODO: Call the `renderBlogList` function
 
-// TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
-//redirectPage
+// Redirect to the home (landing) page using the `redirectPage` function 
+// found in logic.js when the back button is clicked
 btnBackEl.addEventListener('click', function () {
-    redirectPage("blog.html");
+    redirectPage("index.html");
 });

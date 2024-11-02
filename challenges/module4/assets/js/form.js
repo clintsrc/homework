@@ -16,7 +16,7 @@ const btnSubmitEl = document.querySelector("#submit");
  * 
  */
 function handleSubmission(e) {
-    //e.preventDefault();
+    e.preventDefault();
 
     let bInputError = false;
     let blogPost = {};
@@ -51,7 +51,7 @@ function handleSubmission(e) {
         // const latestRecord = JSON.parse(localStorage.getItem('blogPost'));
         const latestRecord = JSON.parse(localStorage.getItem('blogPost')); // read data into an object
         pErrorEl.textContent = JSON.stringify(latestRecord);    // TODO: temporary for debugging
-    }
+    } else { pErrorEl.textContent = "Please complete the form." }
    
 }
 
