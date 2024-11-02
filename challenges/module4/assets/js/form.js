@@ -16,7 +16,7 @@ const btnSubmitEl = document.querySelector("#submit");
  * 
  */
 function handleSubmission(e) {
-    e.preventDefault();
+    //e.preventDefault();
 
     let bInputError = false;
     let blogPost = {};
