@@ -1,0 +1,23 @@
+Should have a form with labels and inputs for username, blog title, and blog content
+
+Should display an error message when the form is submitted with empty fields
+   The form does not display an error message when submitted with empty fields.
+Should store form data in local storage when the form is submitted with valid data
+   Exception: Can't find variable: readLocalStorage
+Should have blog post objects with a username, title, and content.
+   Exception: Can't find variable: readLocalStorage
+Should redirect to "blog.html" after a successful form submission
+   redirectURL: 
+   redirectURL should contain "blog.html"
+Should change the "--circle-color" attribute when the light mode/dark mode toggle is clicked.
+   The "--circle-color" attribute does not change when the light mode/dark mode toggle is clicked!
+Should display a message indicating that no blog posts are available if no blog posts are found.
+   Exception: Can't find variable: readLocalStorage
+Should have a main element with a list of blog posts pulled from localStorage.
+   Exception: Can't find variable: readLocalStorage
+Should render a blog entry with the author's username, and the post's title and content.
+   Exception: Can't find variable: readLocalStorage
+Should return the user to the landing page when the "Back" button is clicked.
+   The "Back" button does not exist or does not return the user to the landing page!
+   redirectURL: 
+   redirectURL should contain "blog.html
