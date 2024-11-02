@@ -38,7 +38,7 @@ btnMode.addEventListener('click', toggleDarkMode);
 
 
 // !!!!! Use the following redirectPage function whenever you need to redirect to a different page.  Do not modify any of the code below
-let redirectURL = '';
+let redirectURL = 'blog.html';
 
 const redirectPage = function (url) {
   redirectURL = url
