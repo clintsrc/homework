@@ -1,3 +1,7 @@
+///////////////////////////
+///  Global variables   ///
+///////////////////////////
+
 // Variables for the form elements
 const inputUsernameEl = document.querySelector("#username");
 const inputTitleEl = document.querySelector("#title");
@@ -5,11 +9,18 @@ const inputContentEl = document.querySelector("#content");
 const pErrorEl = document.querySelector("#error");
 const btnSubmitEl = document.querySelector("#submit");
 
+
+///////////////////////////
+///  Global functions   ///
+///////////////////////////
+
 /*
- * 
- * Create a function that handles the form submission. 
- * Grab the form data and store it in local storage, then redirect to 
- * the blog page using the `redirectPage` function. 
+ *
+ * handleSubmission
+ *
+ * Handles the form submission. 
+ * Grab the form data and store it in local storage, then 
+ * redirect to the blog page using the `redirectPage` function. 
  * 
  * If the form is submitted with missing data, display an error message 
  * to the user.
@@ -57,6 +68,11 @@ function handleSubmission(e) {
     }
    
 }
+
+
+///////////////////////////
+///   Event listeners   /// 
+///////////////////////////
 
 /*
  *
