@@ -4,24 +4,23 @@ const btnBackEl = document.querySelector('#back');
 
 // TODO: Create a function that builds an element and appends it to the DOM
 
-// TODO: Create a function that handles the case where there are no blog posts to display
+// Handle the case where there are no blog posts to display
 function noPosts() {
     mainEl.textContent = "No Blog posts yet...";
 }
-
 
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
 function renderBlogList() {
     const blog = readLocalStorage();
 
-    if (blog.length === 0) {
-        noPosts();
+    if (blog.length > 0) {
+        console.log("DEBUG renderBlogList GOT HERE");   // TODO
     } else {
-        console.log("DEBUG renderBlogList GOT HERE");
+        noPosts();
     }
 }
 
-// TODO: Call the `renderBlogList` function
+// Update the blog display
 renderBlogList();
 
 // Redirect to the home (landing) page using the `redirectPage` function 

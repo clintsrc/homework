@@ -1,4 +1,4 @@
-// TODO: Create a variable that selects the form element
+// Variables for the form elements
 const inputUsernameEl = document.querySelector("#username");
 const inputTitleEl = document.querySelector("#title");
 const inputContentEl = document.querySelector("#content");
@@ -7,7 +7,7 @@ const btnSubmitEl = document.querySelector("#submit");
 
 /*
  * 
- * TODO: Create a function that handles the form submission. 
+ * Create a function that handles the form submission. 
  * Grab the form data and store it in local storage, then redirect to 
  * the blog page using the `redirectPage` function. 
  * 
@@ -25,16 +25,19 @@ function handleSubmission(e) {
 
     if ( (! inputUsernameEl.value) ) {
         bInputError = true;
+        // A future improvement to handle missing elements individually
         //pErrorEl.innerHTML += "Error: Username is required<br>";
     }
 
     if ( (! inputTitleEl.value) ) {
         bInputError = true;
+        // A future improvement to handle missing elements individually
         //pErrorEl.innerHTML += "Error: Title is required<br>";
     }
     
     if ( (! inputContentEl.value) ) {
         bInputError = true;
+        // A future improvement to handle missing elements individually
         //pErrorEl.innerHTML += "Error: Content is required";
     }
     
@@ -46,12 +49,11 @@ function handleSubmission(e) {
         };
 
         localStorage.setItem('blogPost', JSON.stringify(blogPost)); // store the valid record
-        //pErrorEl.textContent = JSON.stringify(blogPost);    // TODO: temporary for debugging
 
-        storeLocalStorage(blogPost);    // add the new record
-        redirectPage("blog.html");      // TBD: broken
+        storeLocalStorage(blogPost);    // add the new record to local storage
+        redirectPage("blog.html");      // TODO: broken
     } else { 
-        pErrorEl.textContent = "Please complete the form.";  // TODO: maybe this is how the edtest expects it to appear?!
+        pErrorEl.textContent = "Please complete the form.";
     }
    
 }
