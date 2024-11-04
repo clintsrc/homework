@@ -25,17 +25,17 @@ function handleSubmission(e) {
 
     if ( (! inputUsernameEl.value) ) {
         bInputError = true;
-        pErrorEl.innerHTML += "Error: Username is required<br>";
+        //pErrorEl.innerHTML += "Error: Username is required<br>";
     }
 
     if ( (! inputTitleEl.value) ) {
         bInputError = true;
-        pErrorEl.innerHTML += "Error: Title is required<br>";
+        //pErrorEl.innerHTML += "Error: Title is required<br>";
     }
     
     if ( (! inputContentEl.value) ) {
         bInputError = true;
-        pErrorEl.innerHTML += "Error: Content is required";
+        //pErrorEl.innerHTML += "Error: Content is required";
     }
     
     if(! bInputError ) {
@@ -48,10 +48,8 @@ function handleSubmission(e) {
         localStorage.setItem('blogPost', JSON.stringify(blogPost)); // store the valid record
         //pErrorEl.textContent = JSON.stringify(blogPost);    // TODO: temporary for debugging
 
-        // const latestRecord = JSON.parse(localStorage.getItem('blogPost'));
-        const latestRecord = JSON.parse(localStorage.getItem('blogPost')); // read data into an object
-        pErrorEl.textContent = JSON.stringify(latestRecord);    // TODO: temporary for debugging
-        redirectPage("blog.html");
+        storeLocalStorage(blogPost);    // add the new record
+        redirectPage("blog.html");      // TBD: broken
     } else { 
         pErrorEl.textContent = "Please complete the form.";  // TODO: maybe this is how the edtest expects it to appear?!
     }
