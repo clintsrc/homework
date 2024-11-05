@@ -7,7 +7,7 @@ const inputUsernameEl = document.querySelector("#username");
 const inputTitleEl = document.querySelector("#title");
 const inputContentEl = document.querySelector("#content");
 const pErrorEl = document.querySelector("#error");
-const btnSubmitEl = document.querySelector("#submit");
+const frmSubmitEl = document.querySelector("form");
 
 
 ///////////////////////////
@@ -80,4 +80,4 @@ function handleSubmission(e) {
  * Call the function to handle the form submission.
  * 
  */
-btnSubmitEl.addEventListener('click', handleSubmission);
+frmSubmitEl.addEventListener('submit', handleSubmission);
