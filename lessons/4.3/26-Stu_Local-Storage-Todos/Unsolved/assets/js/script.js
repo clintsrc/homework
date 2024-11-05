@@ -4,7 +4,7 @@ const todoList = document.querySelector('#todo-list');  // holds the unordered t
 const todoCountSpan = document.querySelector('#todo-count'); // holds element tracking the list item count
 
 // declare the initial empty array for the todo list
-const todos = [];
+let todos = [];
 
 // This function display the current state of the TODO list (each list item and the current count)
 function renderTodos() {
