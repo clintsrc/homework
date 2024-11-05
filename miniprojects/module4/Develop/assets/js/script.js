@@ -6,6 +6,9 @@ const addTextBtn = document.querySelector('#add-text');
 const textInput = document.querySelector('#text-input');
 const clearBtn = document.querySelector('#clear-all');
 
+imageUrlInput.value='https://static.bc-edx.com/coding/full-stack/04-Web-APIs/assets/100-m4-mini.png';
+textInput.value='Rick-Roll Me!';
+
 // ? We need to keep track of the elements that are added to the mood board and their positions
 let tempStorageObject = {
   images: [],
@@ -59,8 +62,8 @@ function loadFromLocalStorage() {
 
 //  ? We create an event listener for the image URL input field. This will create an image element and attach it to the mood board with the URL provided by the user.
 addImageBtn.addEventListener('click', function () {
-  // const imageUrl = imageUrlInput.value;  // TODO
-  const imageUrl = 'https://static.bc-edx.com/coding/full-stack/04-Web-APIs/assets/100-m4-mini.png';
+  const imageUrl = imageUrlInput.value;
+
   if (imageUrl) {
     // Create an image element, add a class of draggable, set the src attribute to the image URL provided by the user, and append it to the body element
     const img = document.createElement('img');
@@ -159,8 +162,10 @@ function placeElementClickHandler(event) {
     currentElement = null;
 
     // Clear inputs
-    imageUrlInput.value = '';
-    textInput.value = '';
+    //imageUrlInput.value = '';
+    //textInput.value = '';
+    imageUrlInput.value='https://static.bc-edx.com/coding/full-stack/04-Web-APIs/assets/100-m4-mini.png';
+    textInput.value='Rick-Roll Me!';
 
     // ? Remove event listeners for mouse move, so that the element is no longer draggable
     document.removeEventListener('mousemove', mouseMoveHandler);
