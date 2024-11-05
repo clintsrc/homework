@@ -6,8 +6,7 @@ const addTextBtn = document.querySelector('#add-text');
 const textInput = document.querySelector('#text-input');
 const clearBtn = document.querySelector('#clear-all');
 
-imageUrlInput.value='https://static.bc-edx.com/coding/full-stack/04-Web-APIs/assets/100-m4-mini.png';
-textInput.value='Rick-Roll Me!';
+const debug = f;
 
 // ? We need to keep track of the elements that are added to the mood board and their positions
 let tempStorageObject = {
@@ -162,10 +161,13 @@ function placeElementClickHandler(event) {
     currentElement = null;
 
     // Clear inputs
-    //imageUrlInput.value = '';
-    //textInput.value = '';
-    imageUrlInput.value='https://static.bc-edx.com/coding/full-stack/04-Web-APIs/assets/100-m4-mini.png';
-    textInput.value='Rick-Roll Me!';
+    if( debug ) {
+      imageUrlInput.value='https://static.bc-edx.com/coding/full-stack/04-Web-APIs/assets/100-m4-mini.png';
+      textInput.value='Rick-Roll Me!';
+    } else {
+      imageUrlInput.value = '';
+      textInput.value = '';
+    }
 
     // ? Remove event listeners for mouse move, so that the element is no longer draggable
     document.removeEventListener('mousemove', mouseMoveHandler);
