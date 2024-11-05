@@ -11,7 +11,21 @@ const btnBackEl = document.querySelector('#back');
 ///  Global functions   ///
 ///////////////////////////
 
-// TODO: Create a function that builds an element and appends it to the DOM
+// Function to create an element and append it to the DOM
+// todo: clean-up
+function createAndAppendElement(tag, parent, textContent = '', attributes = {}) {
+    const element = document.createElement(tag);
+    element.textContent = textContent;
+
+    for (const key in attributes) {
+        if (attributes.hasOwnProperty(key)) {
+            element.setAttribute(key, attributes[key]);
+        }
+    }
+
+    parent.appendChild(element);
+    return element;
+}
 
 
 /*
@@ -30,17 +44,35 @@ function noPosts() {
  * renderBlogList
  *
  * render the list of blog posts if they exist. If not, call the no posts function.
- * 
+ * TODO: clean up
  */
 function renderBlogList() {
     const blog = readLocalStorage();
 
     if (blog.length > 0) {
-        console.log("DEBUG renderBlogList GOT HERE");   // TODO
+        // Clear the main element
+        mainEl.innerHTML = '';
+
+        // Render the list of blog posts to the main element
+        blog.forEach(post => {
+            const postEl = document.createElement('div');
+            postEl.className = 'post';
+
+            const titleEl = document.createElement('h2');
+            titleEl.textContent = post.title;
+            postEl.appendChild(titleEl);
+
+            const contentEl = document.createElement('p');
+            contentEl.textContent = post.content;
+            postEl.appendChild(contentEl);
+
+            mainEl.appendChild(postEl);
+        });
     } else {
         noPosts();
     }
 }
+
 
 ///////////////////////////
 ///  Function Calls    ///
