@@ -54,7 +54,7 @@ function renderBlogList() {
         mainEl.innerHTML = '';
 
         // Render the list of blog posts to the main element
-        blog.forEach(post => {
+        blog.forEach(function(post) {
             const postEl = document.createElement('div');
             postEl.className = 'post';
 
