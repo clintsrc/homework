@@ -24,9 +24,12 @@ Francisco Rivera
 Mike Seaman
 Anthony Pillow
 
-Advanced Students
+Advanced Students:
 John Brunson
 Elayne Terry
+Lauren Moore
+
+Christian Walters (CSS)
 
 -------------
 Project 1

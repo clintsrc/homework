@@ -63,15 +63,15 @@ const netflixQueue = {
     'Eternal Sunshine of the Spotless Mind',
     'Fight Club',
   ],
-  watchMovie: () => {
-    this.queue.pop();
+  watchMovie: function() {
+    this.queue.pop(); // Now this refers to netflixQueue
     return 'Watched a movie!';
   },
-  addMovie: (movie) => {
+  addMovie: function(movie) {
     this.queue.unshift(movie);
     return 'Adding a movie!';
   },
-  printQueue: () => {
+  printQueue: function() {
     let list = '';
     for (let i = this.queue.length - 1; i >= 0; i--) {
       const currentMovie = this.queue[i];
@@ -94,3 +94,13 @@ Printing movie queue!
 
 ${netflixQueue.printQueue()}
 `);
+
+
+/*
+ * BONUS: 
+ * Q: How can you shorten the arrow function syntax even further with implicit return statements?
+ * 
+ * A: A function with a single statement is its 'implicit return' so:
+ *    const arrowFunctionName = () => single_statement;
+ * 
+ */
