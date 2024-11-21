@@ -1,14 +1,3 @@
-/*
- *
- * BONUS:
- * 
- * Q: How can we take a property from an object and assign it to a variable with a different name when we are destructuring it?
- * A: 
- * 
- */
-
-
-
 // 1. Object
 const nodejs = {
   name: 'Node.js',
@@ -56,3 +45,15 @@ const [markup, style, scripting] = languages;
 
 console.log(markup, style, scripting); // <= HTML CSS JavaScript
 console.log(markup); // <= HTML
+
+/*
+ *
+ * BONUS:
+ * 
+ * How can we take a property from an object and assign it to a variable with a different name when we are destructuring it?
+ * 
+ */
+
+const { name: new_name, type: new_type } = nodejs;
+console.log(`BONUS: var new_name == ${new_name}`); // <= Node.js
+console.log(`BONUS: var new_type == ${new_type}`); // <= JavaScript runtime environment
