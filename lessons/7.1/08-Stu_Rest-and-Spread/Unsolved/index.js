@@ -1,8 +1,7 @@
 /*
  * BONUS:
- * Q: If you have completed this activity, work through the following challenge with your partner to further your knowledge:
- *    What other data types can you use the spread operator or rest parameters on?
- * A: 
+ * Q: What other data types can you use the spread operator or rest parameters on?
+ * A: strings, arrays, objects, and iterables (like sets and maps)
  */
 
 // Exercise 1
