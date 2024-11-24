@@ -1,3 +1,19 @@
+/* 
+    Add Comments to Implementation of Prototypes
+    Work with a partner to add comments describing the functionality of the code found in Unsolved.
+
+    📝 Notes
+    Refer to the documentation:
+    Constructor functions in JavaScript
+    Prototypes with Constructor Functions
+
+  🏆 Bonus
+    Q: What is another way we can add on to our functionality without manipulating the prototype directly?
+    A: TODO
+
+ */
+
+
 // TODO: Add a comment describing what kind of function this is.
 function BlogPost(authorName, title, text, createdOn) {
   // Set the properties of the new object being generated.

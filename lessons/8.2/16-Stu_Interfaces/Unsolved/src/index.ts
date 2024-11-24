@@ -1,3 +1,30 @@
+/* 
+
+  Use a TypeScript Interface to Define a Named Object Type
+
+  Work with a partner to implement the following user story:
+  As a developer, I want to use TypeScript interfaces to create named object types.
+
+  Acceptance Criteria
+  It's done when I have created an interface called Employee that describes all following employee objects.
+  It's done when I update the objects to use the Employee interface.
+  It's done when I update the review method to use the Employee interface.
+
+  📝 Notes
+  Refer to the documentation:
+  TypeScript docs on object types
+  TypeScript docs on interfaces
+
+  💡 Hint
+  If the object shapes do not match, how can we use optional properties to fit all objects?
+
+  🏆 Bonus
+  Q: What is a type alias? How do type aliases compare to interfaces?
+  A: TODO
+
+  */
+
+
 // TODO: Create an interface called Employee that describes the following objects. Think about what should be optional and what should be required.
 // TODO: Update the objects to use the Employee interface.
 
