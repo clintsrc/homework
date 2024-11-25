@@ -21,28 +21,102 @@
     What method needs to be written inside the class to initialize its properties?
 
     🏆 Bonus
-    Q: Suppose that you have multiple classes that may be similar and have some overlap. What are some ways that you could model this relationship between classes?
-    A: TODO
+    Q: Suppose that you have multiple classes that may be similar and have some overlap. What are some ways 
+       that you could model this relationship between classes?
+    A: Classes with overlapping features could inherit from a super class that implements those commonalities
     
  */
 
 
 // TODO: Create a class constructor named BlogPost that takes in 'authorName', 'title', 'text', 'createdOn', and 'comments'.
 
-// TODO: Use a default parameter to set 'comments' to an empty array if no value is provided.
+class BlogPost {
+    authorName: string;
+    title: string;
+    text: string;
+    createdOn: string;
+    comments: BlogComment[];
 
-// TODO: Give BlogPost a method called printMetaData() with a `void` return type that logs a message saying 'Created by (authorName) on (createdOn)'.
+    // TODO: Use a default parameter to set 'comments' to an empty array if no value is provided.
+    constructor (
+            authorName: string, 
+            title: string, 
+            text: string, 
+            createdOn: string, 
+            comments: BlogComment[] = []
+        ) {
+        this.authorName = authorName;
+        this.title = title;
+        this.text = text;
+        this.createdOn = createdOn;
+        this.comments = comments;
+    }
 
-// TODO: Give Blog Post a method called addComment() with a `void` return type that takes in a comment and adds it to the comments array.
+    // TODO: Give BlogPost a method called printMetaData() with a `void` return type 
+    //    that logs a message saying 'Created by (authorName) on (createdOn)'.
+    printMetaData(): void {
+        console.log(`Created by ${this.authorName} on ${this.createdOn}: ${this.title}`);
+        console.log(`\t${this.text}`);
+
+        this.comments.forEach(comment => comment.printMetaData());
+    }
+
+    // TODO: Give Blog Post a method called addComment() with a `void` return type 
+    //    that takes in a comment and adds it to the comments array.
+    addComment(comment: BlogComment): void {
+        this.comments.push(comment);
+    }
+}
 
 // TODO: Create a class constructor called BlogComment that takes in 'authorName', 'text', and 'createdOn'.
+class BlogComment {
+    authorName: string;
+    text: string;
+    createdOn: string;
 
-// TODO: Give BlogComment a method called printMetaData() with a `void` return type that logs a message saying 'Created by (authorName) on (createdOn) with (text)'.
+    constructor (authorName: string, text: string, createdOn: string) {
+        this.authorName = authorName; 
+        this.text = text; 
+        this.createdOn = createdOn; 
+    }
+
+    // TODO: Give BlogComment a method called printMetaData() with a `void` return type 
+    //    that logs a message saying 'Created by (authorName) on (createdOn) with (text)'.
+    printMetaData(): void {
+        console.log(`Created by ${this.authorName} on ${this.createdOn} with comment: \n\t${this.text}`);
+    }
+}
+
+// TODO: Create a new object using the BlogPost class constructor and 
+//    omit a value for 'comments'.
+const post = new BlogPost(
+    'John Doe',
+    'My First Post',
+    'Cats are super cute!',
+    '11/24/2024',
+);
 
 // TODO: Create a new object using the BlogComment class constructor.
+const comment = new BlogComment(
+    'Jane Doe',
+    'I agree completely!',
+    '11/25/2024',
+)
 
-// TODO: Create a new object using the BlogPost class constructor and omit a value for 'comments'.
+// TODO: Use the addComment() method on your newly created BlogPost to add 
+//    your newly created BlogComment to its comments array.
+post.addComment(comment);
 
-// TODO: Use the addComment() method on your newly created BlogPost to add your newly created BlogComment to its comments array.
+const comment2 = new BlogComment(
+    'Ima Troll',
+    'WOOF! WOOF! WOOF!',
+    '11/26/2024',
+)
+post.addComment(comment2);
 
-// TODO: Print the meta data for both the BlogPost and the BlogComment to the console.
+// TODO: Print the meta data for both the BlogPost and the 
+//    BlogComment to the console.
+post.printMetaData();
+
+//console.log( post );    // debug
+
