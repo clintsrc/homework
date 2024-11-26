@@ -76,16 +76,16 @@ if (process.argv.length == (num_commands + 2)) {
 // to perform each math operation on the two numbers, `numOne` and `numTwo`
 switch (operation) {
     case 'sum':
-        console.log (numOne + numTwo);
+        console.log (basicmath.sum(numOne, numTwo));
         break;
     case 'difference':
-        console.log (numOne - numTwo);
+        console.log (basicmath.difference(numOne, numTwo));
         break;
     case 'product':
-        console.log (numOne * numTwo);
+        console.log (basicmath.product(numOne, numTwo));
         break;
     case 'quotient':
-        console.log (numOne / numTwo);
+        console.log (basicmath.quotient(numOne, numTwo));
         break;
     default:
         console.log("Error: unrecognized operaton!");
