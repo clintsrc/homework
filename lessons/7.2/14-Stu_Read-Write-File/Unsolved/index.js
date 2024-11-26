@@ -10,7 +10,13 @@ import fs from 'fs';
 const writeToLog = (data) => {
   const logFile = 'log.txt'
 
-  fs.writeFileSync(logFile, data);
+  fs.writeFile(logFile, data, (err) => {
+    if (err) {
+      console.log("Error writing to file!");
+    } else {
+      console.log("Successfully wrote to file!");
+    }
+  });
 };
 
 // the `addFunc` function will add two values that are passed in
