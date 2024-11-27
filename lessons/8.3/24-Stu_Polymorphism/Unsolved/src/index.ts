@@ -1,5 +1,5 @@
 /* 
-
+ *
   Implement Polymorphism in TypeScript
   Work with a partner to implement the following user story:
   As a developer, I want to define various shapes such as circles, rectangles, and triangles, 
@@ -24,8 +24,22 @@
 
   🏆 Bonus
     Q: What are some reasons you would choose an interface instead of inheritance?
-    A: TODO
-
+    A: 
+      * Decoupling: Interfaces allow you to decouple the implementation from the 
+        definition. This means that different classes can implement the same 
+        interface in their own way, promoting flexibility.
+      * Multiple Implementations: A class can implement multiple interfaces, 
+        allowing for more versatile designs compared to single inheritance, 
+        which can only inherit from one class.
+      * Clear Contracts: Interfaces define a clear contract for what methods a 
+        class must implement, which can improve code readability and 
+        maintainability.
+      * Easier Testing: Using interfaces can make it easier to create mock 
+        objects for unit testing, as you can substitute different 
+        implementations without changing the code that uses the interface.
+      * Promoting Composition Over Inheritance: Interfaces encourage the use of 
+        composition, which can lead to more modular and reusable code.
+ *
  */
 
 // Define a base interface for shapes
@@ -35,16 +49,62 @@ interface Shape {
 }
 
 // TODO: Define a Circle class
-// const area = (Math.PI * Math.pow(this.radius, 2));
-// const perimeter = (2 * Math.PI * this.radius);
+class Circle implements Shape {
+  radius: number;
+
+  constructor(radius: number) {
+    this.radius = radius;
+  }
+
+  calculateArea(): number {
+    return ( Math.PI * Math.pow(this.radius, 2));
+  }
+
+  calculatePerimeter(): number {
+    return (2 * Math.PI * this.radius);
+  }
+}
 
 // TODO: Define a Rectangle class
-// const area = (this.length * this.width);
-// const perimeter = (2 * (this.length + this.width));
+class Rectangle implements Shape {
+  length: number;
+  width: number;
 
+  constructor(length: number, width: number) {
+    this.length = length;
+    this.width = width;
+  }
+
+  calculateArea(): number {
+    return (this.length * this.width);;
+  }
+
+  calculatePerimeter(): number {
+    return (2 * (this.length + this.width));
+  }
+
+}
 // TODO: Define a Triangle class
-// const area = 0.5 * this.base * this.height
-// const perimeter = (this.base + this.height + this.hypotenuse);
+class Triangle implements Shape {
+  base: number;
+  height: number;
+  hypotenuse: number;
+
+  constructor(base: number, height: number, hypotenuse: number) {
+    this.base = base;
+    this.height = height;
+    this.hypotenuse = hypotenuse;
+  }
+
+  calculateArea(): number {
+    return (0.5 * this.base * this.height);
+  }
+
+  calculatePerimeter(): number {
+    return (this.base + this.height + this.hypotenuse);
+  }
+
+}
 
 // Calculates the total area of an array of shapes
 function calculateTotalArea(shapes: Shape[]): number {
@@ -65,33 +125,23 @@ function calculateTotalPerimeter(shapes: Shape[]): number {
 }
 
 // TODO: Create instances of the Circle, Rectangle, and Triangle classes
+const circle = new Circle(5);
+const rectangle = new Rectangle(6, 4);
+const triangle = new Triangle(3, 4, 6)
 
 // TODO: Create an array to hold all of the shapes (Circle, Rectangle, and Triangle)
+const shapes: Shape[] = [
+  circle,
+  rectangle,
+  triangle,
+]
 
 // TODO: Display the total area of all shapes
+// Expected: Total Area: 108.53981633974483
+const totalArea = calculateTotalArea(shapes);
+console.log(`Total Area: ${totalArea}`);
 
 // TODO: Display the total perimeter of all shapes
-
-
-
-/* TBD: from previous
-/* Circle
- * Given: radius == 5:
- * Expected:
- * Area: 78.53981633974483
- * Perimeter: 31.41592653589793
- * 
- * Rectangle
- * Given: length == 6, width == 4:
- * Expected:
- * Area: 24
- * Perimeter: 20
- *
- * Triangle
- * Given: base == 3, height == 4, hypotenuse == 6
- * Expected:
- * Area: 6
- * Perimeter: 13
- *
- */
-
+// Expected: Total Perimeter: 64.41592653589794
+const totalPerimeter = calculateTotalPerimeter(shapes);
+console.log(`Total Perimeter: ${totalPerimeter}`);
