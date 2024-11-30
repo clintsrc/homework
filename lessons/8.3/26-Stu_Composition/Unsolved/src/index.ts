@@ -1,9 +1,10 @@
 /* 
-
   Implement Composition in TypeScript
 
   Work with a partner to implement the following user story:
-  As a developer, I want to define a drawing that contains various shapes, such as circles, rectangles, and triangles, so I can calculate and display the total area of the drawing.
+  As a developer, I want to define a drawing that contains various shapes, such 
+  as circles, rectangles, and triangles, so I can calculate and display the total 
+  area of the drawing.
   
   Acceptance Criteria
   It's done when I've created a drawing that holds multiple shapes.
@@ -19,7 +20,9 @@
 
   🏆 Bonus
     Q: How does composition in TypeScript differ from inheritance?
-    A: TODO
+    A: In composition an object contains other objects and their properties
+       and functions. With inheritance the object is a modified version of
+       the parent class and has its properties and features.
 
  */
 
@@ -76,12 +79,37 @@ class Triangle implements Shape {
 }
 
 // TODO: Define a Drawing class that contains instances of various shapes
+class Drawing {
+  private shapes: Shape[];
 
+  constructor() {
+    this.shapes = [];
+  }
+
+  addShape(shape: Shape) {
+    this.shapes.push(shape);
+  }
+
+  calculateTotalArea(): number {
+    let totalArea: number = 0;
+    this.shapes.forEach(shape => {
+      totalArea += shape.calculateArea();
+    });
+    return totalArea;
+  }
+
+}
 // Create instances of the Circle, Rectangle, and Triangle classes
 const circle = new Circle(5);
 const rectangle = new Rectangle(4, 6);
 const triangle = new Triangle(3, 4);
 
 // TODO: Create a drawing containing these shapes
+let drawing = new Drawing();
+drawing.addShape(circle);
+drawing.addShape(rectangle);
+drawing.addShape(triangle);
 
 // TODO: Calculate and display the total area of the drawing
+let totalArea = drawing.calculateTotalArea();
+console.log("Total area:", totalArea);
