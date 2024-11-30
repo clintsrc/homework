@@ -4,7 +4,12 @@ import type Employee from './Employee.js';
 import type ZooAnimals from '../interfaces/ZooAnimals.js';
 import ZooKeeper from './ZooKeeper.js';
 import ZooWorker from './ZooWorker.js';
-// Note that the above are explicitly importing in .js files as the current tsconfig cannot correctly path to the necessary files. The classes will be referred correctly after the dist folder is generated.
+/*
+ * Note: the above are explicitly importing in .js files as the current 
+ * tsconfig cannot correctly path to the necessary files. The classes will be 
+ * referred correctly after the dist folder is generated.
+ * 
+ */
 
 class Cli {
   animals: Animal[];
@@ -62,7 +67,16 @@ class Cli {
   }
 
   // TODO: Update the startAnimalCli() method to create an Animal object and push to the animals array
-  startAnimalCli(): void {}
+  startAnimalCli(): void {
+    let tiger = new Animal(
+      'tiger',
+      false,
+      680,
+      2,
+    )
+    starterAnimalData.push(tiger)
+
+  }
 
   startEmployeeCli(): void {
     inquirer
