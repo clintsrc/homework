@@ -25,7 +25,7 @@
   🏆 Bonus
   If you've completed this activity, work through the following challenge with your partner to further your knowledge:
   Q: What are some examples of CRUD operations in apps you use often?
-  A: TODO
+  A: Banking: Schedule a payment (CREATE), complete payment (DELETE), direct deposit (UPDATE), view balances (READ)
 
  *
  */
@@ -42,6 +42,7 @@ class UserAPI {
   // ! Go to https://https://retool.com/api-generator to generate a your own API endpoint
   private REQUEST_URL = 'https://api-generator.retool.com/fa3Vj1/users';
 
+  // READ all
   async getAllUsers(): Promise<User[]> {
     const response = await fetch(this.REQUEST_URL); // ? Fetch defaults to GET
     const users = await response.json();
@@ -49,6 +50,7 @@ class UserAPI {
     return users;
   }
 
+  // CREATE
   async createUser(user: User) {
     const response = await fetch(this.REQUEST_URL, {
       method: 'POST',
@@ -61,13 +63,43 @@ class UserAPI {
     return response;
   }
 
-  async updateUser() {
-    // TODO: Implement this method
+  // UPDATE
+  // TODO: Implement this method
+  async updateUser(user: User) {
+    const response = await fetch(`${this.REQUEST_URL}/${user.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+
+    return response;
   }
 
-  async deleteUser() {
-    // TODO: Implement this method
+  // DELETE
+  // TODO: Implement this method
+  async deleteUser(userid: number) {
+    const response = await fetch(`${this.REQUEST_URL}/${userid}`, {
+      method: 'DELETE'
+    });
+
+    return response;
   }
+
+  // READ single
+  // TODO: Implement this method
+  async getUser(userid: number) {
+    const response = await fetch(`${this.REQUEST_URL}/${userid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  
+    return response;
+  }
+
 }
 const userAPI = new UserAPI();
 export { userAPI };
