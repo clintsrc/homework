@@ -11,10 +11,14 @@
 
   💡 Hint
   How does JavaScript know when a function is asynchronous?
+
   🏆 Bonus
   If you've completed this activity, work through the following challenge with your partner to further your knowledge:
   Q: What is a try/catch block?
-  A: TODO
+  A: The "try" block contains code that may potentially throw an exception, while the "catch" block contains code 
+     that executes if an exception occurs. This allows developers to detect errors, respond gracefully, and maintain 
+     the application’s stability without crashing. If a "finally" block is specified then that code will try to 
+     recover or clean up after a fatal error
 
 *
 */
@@ -45,23 +49,31 @@ const getRepoName = () => {
   }
 };
 
-const getRepoIssues = (repo: string) => {
+const getRepoIssues = async (repo: string) => {
   const apiUrl = `https://api.github.com/repos/${repo}/issues?direction=asc`;
 
-  fetch(apiUrl).then((response) => {
-    if (response.ok) {
-      response.json().then((data) => {
-        displayIssues(data);
+  try {
+    // wait intil the promise is resolved (returned)
+    const response = await fetch(apiUrl);//.then((response) => {
+      if (response.ok) {
+        // the response doesn't need to be chained now
+        //response.json().then((data) => {
+        const data = await response.json();
+          displayIssues(data);
 
-        // Since GitHub only returns 30 results at a time, we check to see if there's more than 30 by looking for a next page URL in the response headers.
-        if (response.headers.get('Link')) {
-          displayWarning(repo);
-        }
-      });
-    } else {
-      document.location.replace('./index.html');
-    }
-  });
+          // Since GitHub only returns 30 results at a time, we check to see if 
+          //    there's more than 30 by looking for a next page URL in the 
+          //    response headers.
+          if (response.headers.get('Link')) {
+            displayWarning(repo);
+          }
+      } else {
+        document.location.replace('./index.html');
+      }
+  } catch (error) {
+    console.error('Error fetching repo issues:', error);
+    document.location.replace('./index.html');
+  }
 };
 
 const displayIssues = (issues: any[]) => {
