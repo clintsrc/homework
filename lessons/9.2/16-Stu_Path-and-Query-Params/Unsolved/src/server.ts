@@ -1,3 +1,25 @@
+/*
+ *
+
+  📐 Add Comments to Implementation of Path Parameters and Query Parameters
+  Work with a partner to add comments describing the functionality of the code found in Unsolved.
+
+  📝 Notes
+  How are path parameters denoted when building route paths?
+  How can we chain multiple query parameters together?
+  Does the order of query parameters matter?
+  Refer to the documentation:
+  Express.js documentation on route paths
+  Express.js documentation on req.query
+
+  🏆 Bonus
+  If you have completed this activity, work through the following challenge with your partner to further your knowledge:
+  Q: When would you use query string parameters vs. route parameters?
+  A: TODO
+
+ *
+ */
+
 import express from 'express';
 
 // Import the JSON data

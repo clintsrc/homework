@@ -1,3 +1,34 @@
+ /*
+  *
+
+  🐛 PUT and DELETE Requests Not Working
+  Work with a partner to resolve the following issue(s):
+  As a user, I want to be able to update and delete data using PUT and DELETE routes.
+
+  Expected Behavior
+  When the user makes a request to the PUT or DELETE route, data should be updated or deleted respectively.
+
+  Actual Behavior
+  When a user makes a request to the PUT or DELETE route, the data is not updated or deleted.
+
+  Steps to Reproduce the Problem
+  Start the server by running npm start.
+  Open Insomnia and make a PUT request.
+  Make a GET request and see that the PUT request hasn't altered the data.
+  Make a DELETE request.
+  Make a GET request and see that the DELETE request hasn't deleted the data.
+
+  💡 Hints
+  How would you access route parameters?
+
+  🏆 Bonus
+  If you've completed this activity, work through the following challenge with your partner to further your knowledge:
+  Q: What other HTTP methods are there? When would they be used?
+  A: TODO
+
+  *
+  */
+
 import express from 'express';
 
 // Import the JSON data
