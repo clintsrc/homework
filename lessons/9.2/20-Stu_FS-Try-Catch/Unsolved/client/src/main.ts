@@ -23,10 +23,15 @@
   🏆 Bonus
   If you've completed this activity, work through the following challenge with your partner to further your knowledge:
   Q: How does finally relate to try/catch?
-  A: TODO
+  A: Here's how:
+    * It always runs after try and catch.
+    * It runs regardless of whether an exception was thrown or handled.
+    * It is typically used for cleanup tasks (like closing database connections, file handlers, or releasing resources).
 
  *
  */
+
+// NOTE: The issue is in server/src/server.ts
 
 const contactList: HTMLDivElement = document.getElementById(
   'contact-list'

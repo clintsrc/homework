@@ -24,8 +24,14 @@
   🏆 Bonus
   If you've completed this activity, work through the following challenge with your partner to further your knowledge:
   Q: What other HTTP methods are there? When would they be used?
-  A: TODO
-
+  A:
+    POST (C)reate new records
+    GET (R)ead data
+    PUT (U)pdate / replace
+    DELETE (D)elete records
+    PATCH for partial updates
+    OPTIONS, HEAD Server metadata or diagnostics
+    TRACE, CONNECT for troubleshooting or for secure communication.
   *
   */
 
@@ -86,7 +92,7 @@ app.post('/api/guests', (req, res) => {
 
 // PUT route to update a guest based on the ID provided
 app.put('/api/guests/:id', (req, res) => {
-  const requestedId = req.query.id;
+  const requestedId = req.params.id;    // req.params.id, not req.query.id (Route parameters not stging query)
 
   // Update the guest if it exists
   for (let i = 0; i < guestData.length; i++) {
@@ -108,7 +114,7 @@ app.put('/api/guests/:id', (req, res) => {
 
 // DELETE route to delete a guest based on the ID provided
 app.delete('/api/guests/:id', (req, res) => {
-  const requestedId = req.query.id;
+  const requestedId = req.params.id;    // req.params.id, not req.query.id (Route parameters not stging query)
 
   for (let i = 0; i < guestData.length; i++) {
     if (requestedId === guestData[i].id.toString()) {
