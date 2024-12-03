@@ -19,7 +19,11 @@
   🏆 Bonus
   If you've completed this activity, work through the following challenge with your partner to further your knowledge:
   Q: What is the difference between document.location.assign and document.location.replace?
-  A: TODO
+  A: document.location.assign and document.location.replace are handled different in the browser history.
+     * document.location.assign navigates to the URL and ADDS it to the browser history: 
+       this lets the user return to the previous page using the browser's back button
+     * document.location.assign REPLACES the current URL entry and does NOT add an entry to the browser history 
+       it overwrites it. This prevents the user from returning to the previous page using the browser's back button
 
  *
  */
@@ -29,6 +33,20 @@ const badRequestUrl = 'https://api.github.com/unicorns';
 const redirectUrl = './404.html';
 
 const getRequest = async () => {
+
   // Use a conditional to check the response status.
+
   // If that status equals the conditional, then redirect to the 404 page.
+  try {
+    const response = await fetch(badRequestUrl);
+
+    // redirect to a new page if an error occurs
+    if (404 === response.status){
+      location.replace(redirectUrl);
+    }
+  } catch (error) {
+    console.log(`Fetch error: ${error}`)
+  }
 };
+
+getRequest();
