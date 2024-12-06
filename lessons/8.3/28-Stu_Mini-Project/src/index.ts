@@ -1,4 +1,4 @@
-import Animal from './clases/Animal.js';
+import Animal from './classes/Animal.js';
 import Employee from './classes/Employee.js';
 import Cli from './classes/Cli.js';
 import ZooKeeper from './classes/ZooKeeper.js';
@@ -7,9 +7,9 @@ import ZooWorker from './classes/ZooWorker.js';
 // tsconfig cannot correctly path to the necessary files. The classes will be 
 // referred correctly after the dist folder is generated.
 
-// TODO: Create an array that will take in the Animal Objects
+// Create an array that will take in the Animal Objects
 const starterAnimalData: string[] = [];
-// TODO: Create an array that will take in the Employee Objects
+// Create an array that will take in the Employee Objects
 const starterEmployeeData: Employee[] = [];
 
 // Add the existing animals and employees
