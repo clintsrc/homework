@@ -19,6 +19,8 @@ PostgreSQL documentation on meta-commands such as executing SQL statements from 
 Which commands do you use to start PostgreSQL in the command-line interface?
 Which meta-command can you use to quit out of the PostgreSQL command-line interface?
 
+You may need to change the file encoding for windows:
+Get-Content .\schema-utf8.sql | Set-Content -Encoding utf8 schema-utf8.sql
 */
 
 -- Drops the sample_db if it exists currently --
