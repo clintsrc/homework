@@ -1,3 +1,29 @@
+/*
+
+🏗️ Implement Join Clause to Combine Two Tables
+
+Work with a partner to implement the following user story:
+As a developer, I want to create a single query that includes data on book 
+titles and prices.
+
+Acceptance Criteria
+It's done when the matching values in the book_prices and favorite_books tables 
+are combined and returned as the result.
+
+Assets
+The following image demonstrates the output of the new query:
+[see screenshot in assets]
+The new query includes both book_name and price columns.
+
+💡 Hints
+What is the relationship between the two tables?
+
+🏆 Bonus
+If you have completed this activity, work through the following challenge with your partner to further your knowledge:
+What is a many-to-many relationship?
+
+ */
+
 DROP DATABASE IF EXISTS books_db;
 CREATE DATABASE books_db;
 

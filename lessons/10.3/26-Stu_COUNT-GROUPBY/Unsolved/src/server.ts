@@ -1,3 +1,20 @@
+/*
+
+📐 Add Comments to Implementation of Aggregate Functions in PostgreSQL Queries
+Work with a partner to add comments describing the functionality of the code 
+  found in server.
+
+📝 Notes
+Refer to the documentation:
+PostgreSQL documentation on aggregate functions
+
+🏆 Bonus
+If you have completed this activity, work through the following challenge with 
+  your partner to further your knowledge:
+What other aggregate functions can we use in PostgreSQL queries?
+
+ */
+
 import express from 'express';
 import { QueryResult } from 'pg';
 import { pool, connectToDb } from './connection.js';
