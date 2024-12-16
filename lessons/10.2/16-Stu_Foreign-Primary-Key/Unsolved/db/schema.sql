@@ -24,8 +24,33 @@ What is the difference between primary and foreign key constraints?
 🏆 Bonus
 If you have completed this activity, work through the following challenge with 
 your partner to further your knowledge:
-What are the advantages of using multiple, related tables to store data?
+Q: What are the advantages of using multiple, related tables to store data?
+A: Having multiple tables prevents duplicating information in the database, 
+   because you store the information only once in one table. When you need 
+   information that isn't in the current table, you can link the two tables 
+   together
 
  */
 
 -- Write your Schema Here -- 
+DROP DATABASE IF EXISTS customers_db;
+CREATE DATABASE customers_db;
+
+\c customers_db;
+
+CREATE TABLE customers (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE customerorders (
+  id SERIAL PRIMARY KEY,
+  customer_id INTEGER NOT NULL,
+  FOREIGN KEY (customer_id)
+  REFERENCES customers(id)
+);
+
+\dt
+\d customers
+\d customerorders

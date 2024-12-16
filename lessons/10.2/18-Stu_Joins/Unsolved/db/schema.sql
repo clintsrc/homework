@@ -19,9 +19,13 @@ The new query includes both book_name and price columns.
 What is the relationship between the two tables?
 
 🏆 Bonus
-If you have completed this activity, work through the following challenge with your partner to further your knowledge:
-What is a many-to-many relationship?
-
+If you have completed this activity, work through the following challenge with 
+your partner to further your knowledge:
+Q: What is a many-to-many relationship?
+A: A many-to-many relationship describes when multiple records in one table 
+can be associated with multiple records in another table.
+   By comparison, a 1-to-many relationship describes when one record in a table 
+   can be associated with multiple records in another table.
  */
 
 DROP DATABASE IF EXISTS books_db;
@@ -39,8 +43,11 @@ CREATE TABLE favorite_books (
   book_name VARCHAR(30) NOT NULL,
   in_stock BOOLEAN,
   book_price INTEGER,
-  FOREIGN KEY (book_price)
-  REFERENCES book_prices(id)
+  FOREIGN KEY (book_price) REFERENCES book_prices(id)
   ON DELETE SET NULL
 );
 
+
+\dt
+\d book_prices
+\d favorite_books

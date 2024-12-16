@@ -1,3 +1,5 @@
+\c books_db;
+
 INSERT INTO book_prices (price)
 VALUES (1),
        (2),
@@ -13,3 +15,6 @@ VALUES ('The Great Gatsby', true, 1),
        ('Crime and Punishment', true, 2),
        ('Moby Dick', true, 4),
        ('Decameron', false, 1);
+
+SELECT * FROM book_prices;
+SELECT * FROM favorite_books;

@@ -16,6 +16,13 @@ It's done when relationships between the tables have been established using
 It's done when we can retrieve the same set of information from the 3NF tables 
     as the original 1NF table using JOIN clauses.
 
+1. Identify the primary key for each table.
+2. Remove any repeating groups or arrays to achieve 1NF.
+3. Ensure that all non-key attributes are fully dependent on the primary key to 
+   achieve 2NF.
+4. Eliminate any transitive dependencies to reach 3NF.
+
+
 Assets
 The following image demonstrates the expected result after converting to 3NF:
     [see the screenshot in assets]
@@ -43,10 +50,19 @@ CREATE DATABASE company;
 \c company;
 
 -- CONVERT THE FOLLOWING INTO 3RD NORMAL FORM STANDARDIZATION --
+CREATE TABLE locations (
+    location_id INTEGER PRIMARY KEY,
+    location_name VARCHAR(255),
+    location_manager VARCHAR(255)
+);
+
 CREATE TABLE businesses (
     business_id INTEGER PRIMARY KEY,
     business_name VARCHAR(255),
     location_id INTEGER,
-    location_name VARCHAR(255),
-    location_manager VARCHAR(255)
+    FOREIGN KEY (location_id) REFERENCES locations(location_id)
 );
+
+\dt
+\d locations
+\d businesses
