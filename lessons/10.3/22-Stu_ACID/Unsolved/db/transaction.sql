@@ -1,6 +1,7 @@
 /*
 
 📚 Implementing Transactions in the Library Database
+
 Work with a partner to implement the following user story:
 As a database administrator, I want to ensure that when adding new records to 
     the library database, all inserts are treated as a single transaction to 
@@ -27,11 +28,14 @@ How can you use RAISE NOTICE to log the outcome of the transaction, whether
 
 🏆 Bonus
 If you have completed this activity, challenge yourself further with the following:
-How can you extend the database schema to associate books with authors, taking 
+Q: How can you extend the database schema to associate books with authors, taking 
     into consideration that a book might have multiple authors and an author 
     might have written multiple books?
-Implement a mechanism to capture and log more details about the specific error 
+A: TODO
+
+Q: Implement a mechanism to capture and log more details about the specific error 
     message that might be triggered during the transaction.
+A: TODO
 
  */
 
@@ -49,24 +53,33 @@ DROP TABLE IF EXISTS authors;
 -- Create a books table
 CREATE TABLE books (
     book_id INTEGER PRIMARY KEY,
-    book_name VARCHAR(255)
+    book_name VARCHAR(255) NOT NULL
 );
 
 -- Create an authors table
 CREATE TABLE authors (
     author_id INTEGER PRIMARY KEY,
-    author_name VARCHAR(255)
+    author_name VARCHAR(255) NOT NULL
 );
 
 -- TODO: Add a transaction block here
+DO $$
+BEGIN
+    INSERT INTO books (book_id, book_name)
+    VALUES
+        (1, 'Pride and Prejudice'),
+        (2, 'To Kill a Mockingbird'),
+        (3, 'The Great Gatsby');
 
-INSERT INTO books (book_id, book_name)
-VALUES
-    (1, 'Pride and Prejudice'),
-    (2, 'To Kill a Mockingbird'),
-    (3, 'The Great Gatsby');
+    INSERT INTO authors (author_id, author_name)
+    VALUES
+        (10, 'Jane Austen'),
+        (11, 'Harper Lee');
 
-INSERT INTO authors (author_id, author_name)
-VALUES
-    (10, 'Jane Austen'),
-    (11, 'Harper Lee');
+    RAISE NOTICE 'Successful transaction seeding the books and authors tables';
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE NOTICE 'An error occurred: %', SQLERRM;
+    ROLLBACK;
+END $$ LANGUAGE plpgsql;
+
