@@ -53,18 +53,22 @@ DROP TABLE IF EXISTS authors;
 -- Create a books table
 CREATE TABLE books (
     book_id INTEGER PRIMARY KEY,
-    book_name VARCHAR(255) NOT NULL
+    book_name VARCHAR(255)
 );
 
 -- Create an authors table
 CREATE TABLE authors (
     author_id INTEGER PRIMARY KEY,
-    author_name VARCHAR(255) NOT NULL
+    author_name VARCHAR(255)
 );
 
 -- TODO: Add a transaction block here
 DO $$
-BEGIN
+    DECLARE
+        -- For variables
+    BEGIN
+        -- Begin transaction
+
     INSERT INTO books (book_id, book_name)
     VALUES
         (1, 'Pride and Prejudice'),
@@ -76,10 +80,14 @@ BEGIN
         (10, 'Jane Austen'),
         (11, 'Harper Lee');
 
-    RAISE NOTICE 'Successful transaction seeding the books and authors tables';
+    -- Commit automatically happens when it reaches here
+RAISE NOTICE 'Transaction completed successfully';
+
 EXCEPTION
     WHEN OTHERS THEN
-        RAISE NOTICE 'An error occurred: %', SQLERRM;
+    RAISE NOTICE 'An error occurred %', SQLERRM;
     ROLLBACK;
-END $$ LANGUAGE plpgsql;
+END $$
 
+-- SELECT * from books;
+-- SELECT * from authors;
