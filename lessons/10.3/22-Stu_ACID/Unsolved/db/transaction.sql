@@ -35,7 +35,9 @@ A: TODO
 
 Q: Implement a mechanism to capture and log more details about the specific error 
     message that might be triggered during the transaction.
-A: TODO
+A: Adding a SQLSTATE can provide more error details:
+   NOTICE:  An error occurred: duplicate key value violates unique 
+      constraint "books_pkey", Error Code: 23505
 
  */
 
@@ -49,6 +51,7 @@ CREATE DATABASE library;
 
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS authors;
+DROP TABLE IF EXISTS bibliography;
 
 -- Create a books table
 CREATE TABLE books (
@@ -60,6 +63,14 @@ CREATE TABLE books (
 CREATE TABLE authors (
     author_id INTEGER PRIMARY KEY,
     author_name VARCHAR(255)
+);
+
+CREATE TABLE bibliography (
+    bibliography_id INTEGER PRIMARY KEY,
+    author_id INTEGER,
+    book_id INTEGER,
+    FOREIGN KEY (author_id) REFERENCES authors(author_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
 );
 
 -- TODO: Add a transaction block here
@@ -74,20 +85,26 @@ DO $$
         (1, 'Pride and Prejudice'),
         (2, 'To Kill a Mockingbird'),
         (3, 'The Great Gatsby');
+        --(4, 'Northanger Abbey');
 
     INSERT INTO authors (author_id, author_name)
     VALUES
         (10, 'Jane Austen'),
         (11, 'Harper Lee');
+        --(12, 'F. Scott Fitzgerald');
+
+    INSERT INTO bibliography (bibliography_id, author_id, book_id)
+    VALUES
+        (1001, 10, 1),
+        (1002, 11, 2);
+        --(1003, 12, 3),
+        --(1004, 10, 4);
 
     -- Commit automatically happens when it reaches here
 RAISE NOTICE 'Transaction completed successfully';
 
 EXCEPTION
     WHEN OTHERS THEN
-    RAISE NOTICE 'An error occurred %', SQLERRM;
+    RAISE NOTICE 'An error occurred: %, Error Code: %', SQLERRM, SQLSTATE;
     ROLLBACK;
 END $$
-
--- SELECT * from books;
--- SELECT * from authors;
