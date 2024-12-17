@@ -15,7 +15,7 @@ const deletedRow = 2;
 
 pool.query(
   `DELETE FROM favorite_books WHERE id = $1`,
-  0,
+  [deletedRow], // fixed: $1 represents a record (array)
   (err: Error, result: QueryResult) => {
   if (err) {
     console.log(err);

@@ -32,7 +32,14 @@ What does the $1 represent in a parameterized query?
 🏆 Bonus
 If you have completed this activity, work through the following challenge with 
   your partner to further your knowledge:
-How can you set user-defined values using a SQL statement?
+Q: How can you set user-defined values using a SQL statement?
+A: By using variables, e.g.:
+DO $$
+DECLARE
+    my_variable INT := 10;
+BEGIN
+    RAISE NOTICE 'My value is: %', my_variable;
+END $$;
 
  */
 
