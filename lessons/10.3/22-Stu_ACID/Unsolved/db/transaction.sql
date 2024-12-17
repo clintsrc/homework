@@ -31,7 +31,7 @@ If you have completed this activity, challenge yourself further with the followi
 Q: How can you extend the database schema to associate books with authors, taking 
     into consideration that a book might have multiple authors and an author 
     might have written multiple books?
-A: TODO
+A: See changes related to a new bibliography table
 
 Q: Implement a mechanism to capture and log more details about the specific error 
     message that might be triggered during the transaction.
@@ -62,13 +62,13 @@ CREATE TABLE books (
 -- Create an authors table
 CREATE TABLE authors (
     author_id INTEGER PRIMARY KEY,
-    author_name VARCHAR(255)
+    author_name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE bibliography (
     bibliography_id INTEGER PRIMARY KEY,
-    author_id INTEGER,
-    book_id INTEGER,
+    author_id INTEGER NOT NULL,
+    book_id INTEGER NOT NULL,
     FOREIGN KEY (author_id) REFERENCES authors(author_id),
     FOREIGN KEY (book_id) REFERENCES books(book_id)
 );
@@ -84,21 +84,21 @@ DO $$
     VALUES
         (1, 'Pride and Prejudice'),
         (2, 'To Kill a Mockingbird'),
-        (3, 'The Great Gatsby');
-        --(4, 'Northanger Abbey');
+        (3, 'The Great Gatsby'),
+        (4, 'Northanger Abbey');
 
     INSERT INTO authors (author_id, author_name)
     VALUES
         (10, 'Jane Austen'),
-        (11, 'Harper Lee');
-        --(12, 'F. Scott Fitzgerald');
+        (11, 'Harper Lee'),
+        (12, 'F. Scott Fitzgerald');
 
     INSERT INTO bibliography (bibliography_id, author_id, book_id)
     VALUES
         (1001, 10, 1),
-        (1002, 11, 2);
-        --(1003, 12, 3),
-        --(1004, 10, 4);
+        (1002, 11, 2),
+        (1003, 12, 3),
+        (1004, 10, 4);
 
     -- Commit automatically happens when it reaches here
 RAISE NOTICE 'Transaction completed successfully';
