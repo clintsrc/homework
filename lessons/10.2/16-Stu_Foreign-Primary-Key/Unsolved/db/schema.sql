@@ -44,11 +44,12 @@ CREATE TABLE customers (
   last_name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE customerorders (
+CREATE TABLE customer_orders (
   id SERIAL PRIMARY KEY,
   customer_id INTEGER NOT NULL,
-  FOREIGN KEY (customer_id)
-  REFERENCES customers(id)
+  order_details TEXT NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers(id)
+  ON DELETE SET NULL
 );
 
 \dt
