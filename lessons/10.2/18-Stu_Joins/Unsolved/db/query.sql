@@ -1,8 +1,9 @@
 -- Add your code below and execute file in the PostgreSQL Shell --
-\c books_db;
+--\c books_db;
 
 SELECT 
-    book_name, price
+    favorite_books.book_name AS Name, 
+    book_prices.price AS Price
 FROM 
     book_prices
 JOIN 

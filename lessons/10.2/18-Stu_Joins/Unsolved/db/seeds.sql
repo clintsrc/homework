@@ -16,5 +16,5 @@ VALUES ('The Great Gatsby', true, 1),
        ('Moby Dick', true, 4),
        ('Decameron', false, 1);
 
-SELECT * FROM book_prices;
-SELECT * FROM favorite_books;
+-- SELECT * FROM book_prices;
+-- SELECT * FROM favorite_books;
