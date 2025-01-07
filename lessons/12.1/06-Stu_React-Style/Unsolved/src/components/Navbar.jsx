@@ -1,15 +1,25 @@
 // Here we import the Navbar.css file to grant access to some additional classNames
 import '../styles/Navbar.css';
 
-// TODO: Create a styles object called "styles"
+// Create a styles object called "styles"
+const styles = {
+  navbar: {
+    backgroundColor: '#008000',
+    padding: '20px',
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  nav: {
+    color: 'white',
+  },
+};
 
 function Navbar() {
-  // TODO: Add a style attribute to `nav`
+  // Add a style attribute to `nav`
   return (
-    <nav className="navbar">
-      <a href="/">Welcome</a>
+    <nav className="navbar" style={styles.navbar}>
+      <a href="/" style={styles.nav}>Welcome</a>
     </nav>
   );
 }
-
 export default Navbar;

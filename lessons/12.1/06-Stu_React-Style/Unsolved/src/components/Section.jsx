@@ -2,11 +2,21 @@
 import '../styles/Section.css';
 
 // TODO: Create a styles object called "styles"
+const styles = {
+  section: {
+    backgroundColor: 'orange',
+    padding: '20px',
+    textAlign: 'center',
+  },
+  h1: {
+    color: 'white',
+  },
+};
 
 function Section() {
   // TODO: Add a style attribute to `section`
   return (
-    <section className="section">
+    <section className="section" style={styles.section}>
       <h2>Lorem Ipsum Dolor Sit Amet</h2>
       <p>
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem

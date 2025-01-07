@@ -1,15 +1,33 @@
+
 function List(props) {
   return (
     <ul className="list-group">
-      {/* TODO: Use the `map` method to iterate over each grocery and return a `li` element that contains the item's name and has a unique key attribute */}
       {props.groceries.map((item) => {
         return (
-          // TODO: Your code here
-          <li></li>
+          <li key={item.id} className="list-group-item">
+            {item.name} {item.purchased ? "(Purchased)" : "(Not Purchased)"}
+          </li>
         );
       })}
     </ul>
   );
 }
+
+/*
+// BONUS: use the filter() method to only list the unpurchased groceries
+function List(props) {
+  const unpurchasedGroceries = props.groceries.filter(item => !item.purchased);
+
+  return (
+    <ul className="list-group">
+      {unpurchasedGroceries.map(item => (
+        <li key={item.id} className="list-group-item">
+          {item.name}
+        </li>
+      ))}
+    </ul>
+  );
+}
+*/
 
 export default List;
