@@ -18,7 +18,12 @@ if (apiKey) {
 }
 
 // TODO: Create a parser to format the output response.
-const parser = StructuredOutputParser.fromNamesAndDescriptions();
+const parser = StructuredOutputParser.fromNamesAndDescriptions({
+  Korean: "Korean translation here",
+  French: "French translation here",
+  Spanish: "Spanish translation here",
+  German: "German translation here"
+});
 
 const formatInstructions = parser.getFormatInstructions();
 
