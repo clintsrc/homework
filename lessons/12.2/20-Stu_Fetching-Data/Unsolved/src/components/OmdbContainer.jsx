@@ -1,4 +1,3 @@
-// event.preventDefault();
 import { useState, useEffect } from 'react';
 import Container from './UI/Container';
 import Row from './UI/Row';
@@ -11,15 +10,19 @@ import API from '../utils/API';
 const OmdbContainer = () => {
   const [result, setResult] = useState({});
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false); // BONUS: New state for loading
 
   // When the search form is submitted, use the API.search method to search for the movie(s)
-  const searchMovie = (query) =>
+  const searchMovie = (query) => {
+    setLoading(true); // Set loading to true when search starts
     API.search(query)
       .then((res) => {
-        setResult(res.data)
-        setSearch('')
+        setResult(res.data);
+        setSearch('');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false)); // Set loading to false after search completes
+  };
 
   // TODO: Fix the useEffect hook running after every state change
   /*
@@ -62,7 +65,9 @@ const OmdbContainer = () => {
       <Row>
         <Col size="md-8">
           <Card heading={Title || 'Search for a Movie to Begin'}>
-            {Title ? (
+            {loading ? (
+              <h3>Loading...</h3> // Render loading element if loading is true
+            ) : Title ? (
               <MovieDetail
                 title={Title}
                 src={Poster}

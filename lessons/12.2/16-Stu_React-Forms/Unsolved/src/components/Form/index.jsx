@@ -2,7 +2,8 @@ import { useState } from 'react';
 import './style.css';
 
 // Here we import a helper function that will check if the email is valid
-import { checkPassword, validateEmail } from '../../utils/helpers';
+// not needed for BONUS
+// import { checkPassword, validateEmail } from '../../utils/helpers';
 
 function Form() {
   // Create state variables for the fields in the form
@@ -16,26 +17,39 @@ function Form() {
 
   const handleInputChange = (e) => {
     // Getting the value and name of the input which triggered the change
-    const { target } = e;
-    const inputType = target.name;
-    const inputValue = target.value;
+    // not needed for BONUS
+    //const { target } = e;
+    //const inputType = target.name;
+    //const inputValue = target.value;
 
     // Based on the input type, we set the state of either email, username, and password
     // TODO: Add an else statement to the end that will set the password to the value of 'inputValue'
 
-    if (inputType === 'email') {
+/*     if (inputType === 'email') {
       setEmail(inputValue);
     } else if (inputType === 'userName') {
       setUserName(inputValue);
     } else if(inputType === 'password') {
       setPassword(inputType);
+    } */
+
+    const { name, value } = e.target; // BONUS
+
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'userName') {
+      setUserName(value);
+    } else if (name === 'password') {
+      setPassword(value);
     }
+
   };
 
   const handleFormSubmit = (e) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
 
+    /*
     // First we check to see if the email is not valid or if the userName is empty. If so we set an error message to be displayed on the page.
     if (!validateEmail(email) || !userName) {
       setErrorMessage('Email or username is invalid');
@@ -49,6 +63,30 @@ function Form() {
       );
       return;
     }
+    */
+
+    /* BEGIN BONUS */
+    // Validate email
+    if (!email.includes('@') || !email.includes('.')) {
+      setErrorMessage('Invalid email address');
+      return;
+    }
+
+    // Validate username
+    if (userName.trim() === '') {
+      setErrorMessage('Username cannot be empty');
+      return;
+    }
+
+    // Validate password
+    if (password.length < 6) {
+      setErrorMessage('Password must be at least 6 characters long');
+      return;
+    }
+   
+    // If all validations pass
+    setErrorMessage('');
+    // END BONUS
 
     // If successful, we want to clear out the input after registration.
     setUserName('');

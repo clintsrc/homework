@@ -29,7 +29,8 @@
  *  partner to further your knowledge:
  * Q: How could we have implemented basic form validation without using helper 
  *  functions?
- * A: TODO
+ * A: directly validate the inputs using inline validation logic 
+ *    (implemented in index.jsx)
  *
  */
 
