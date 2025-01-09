@@ -1,3 +1,4 @@
+// event.preventDefault();
 import { useState, useEffect } from 'react';
 import Container from './UI/Container';
 import Row from './UI/Row';
@@ -21,17 +22,26 @@ const OmdbContainer = () => {
       .catch((err) => console.log(err));
 
   // TODO: Fix the useEffect hook running after every state change
-  useEffect(() => {
-    searchMovie('The Matrix');
-  });
+  /*
+   * useEffect() needs an empty dependency array so that it only runs once when
+   *  the component mounts
+   * (ref: https://react.dev/reference/react/useEffect#my-effect-runs-twice-when-the-component-mounts)
+   *
+   */
+  useEffect( () => {
+      searchMovie('The Matrix');
+    }, []
+  );
 
   // TODO: Fix the handleInputChange function
-  const handleInputChange = (e) => console.log(e.target.value);
+  // the event target value was being console logged which bypassed the state hook
+  const handleInputChange = (e) => setSearch(e.target.value);
 
   // TODO: Fix the handleFormSubmit function not actually searching for the movie
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setSearch(e.target.value);
+    //setSearch(e.target.value);  // WRONG! setting to the immutable event target value which bypasses the api search itself
+    searchMovie(search);
   };
 
   // Destructure the result object to make the code more readable, assign them to empty strings to start

@@ -29,7 +29,6 @@
  * Q: How could we show a loading element before the search results are displayed? 
  *  What React feature allows for this kind of behavior?
  * A: TODO
- * 
  */
 
 import ReactDOM from 'react-dom/client';

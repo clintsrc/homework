@@ -15,7 +15,10 @@
  *  your partner to further your knowledge:
  * Q: What could be a benefit of working with multiple useState hooks within a single 
  *  component?
- * A: TODO
+ * A: 
+ *  - Separation of concerns: better structured, more readable code
+ *  - Efficiency: only the code that needs to react to the state change will
+ * 
  * 
  */
 

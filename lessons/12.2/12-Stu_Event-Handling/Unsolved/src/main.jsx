@@ -21,15 +21,19 @@
  * When registering event handlers, we pass a function reference to the browser, so 
  *  that it can be invoked when the user interaction occurs on the specified element or 
  *  elements. What are we doing here?
- * 
+ * A: If you want to define your event handler inline, wrap it in an anonymous 
+ *  function. This creates a function to be called later rather than executing the code 
+ *  inside the handler with every render
  * The React Docs can be a helpful resource to consult if you are having difficulty 
  *  identifying the issue.
+ * A: ref: https://react.dev/learn/responding-to-events
  * 
  * 🏆 Bonus
  * If you have completed this activity, work through the following challenge with 
  *  your partner to further your knowledge:
  * Q: What are some other events we can use with React elements?
- * A: TODO
+ * A: The standard DOM events. Here's the REACT documentation:
+ *  https://react.dev/reference/react-dom/components/common
  * 
  */
 

@@ -21,7 +21,9 @@
  * If you have completed this activity, work through the following challenge with your 
  *  partner to further your knowledge:
  * Q: What are some other use cases for the useEffect() Hook?
- * A: TODO
+ * A: 
+ *  - fetching data from an api
+ *  - other DOM updates: adding/removing event listeners, timers
  * 
  */
 
