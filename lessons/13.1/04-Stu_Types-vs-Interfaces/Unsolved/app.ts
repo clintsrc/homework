@@ -1,3 +1,21 @@
+/*
+📐 Add Comments to Types vs. Interfaces Code
+Work with a partner to add comments describing the functionality of the code found in Unsolved.
+
+📝 Notes
+Refer to the documentation:
+
+TypeScript Object Documentation
+
+TypeScript Class Documentation
+
+🏆 Bonus
+If you've completed this activity, work through the following challenge with your partner to further your knowledge:
+
+What are some other cases for which is it more suitable to make use of either types or interfaces?
+ */
+
+
 // TODO: Add comments as indicated in the code comments below
 
 

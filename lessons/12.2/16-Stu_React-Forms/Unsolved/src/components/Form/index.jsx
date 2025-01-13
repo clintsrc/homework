@@ -34,7 +34,7 @@ function Form() {
     } */
 
     const { name, value } = e.target; // BONUS
-
+  
     if (name === 'email') {
       setEmail(value);
     } else if (name === 'userName') {

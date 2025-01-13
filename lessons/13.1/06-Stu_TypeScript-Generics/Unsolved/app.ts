@@ -1,5 +1,20 @@
+/*
+📐 Troubleshoot TypeScript Generics Code
+Work with a partner to correct the defects in the code found in Unsolved so that it functions as intended and matches the output described in the comments.
+
+📝 Notes
+Refer to the documentation:
+
+TypeScript Generics
+
+🏆 Bonus
+If you've completed this activity, work through the following challenge with your partner to further your knowledge:
+
+What are some other cases for which we may want to make use of TypeScript generics?
+ */
+
 // Generic function to return the first and last values of the provided array.
-const getFirstAndLastArrayValues = <T>(inputArray: T[]):T => {
+const getFirstAndLastArrayValues = <T>(inputArray: T[]): T => {
   const resultArray = new Array();
   resultArray[0] = inputArray[0];
   resultArray[1] = inputArray[inputArray.length - 1];
@@ -25,9 +40,9 @@ class SimpleStack<T> {
     return this._array.pop();
   }
 
-	writeToConsole(): void {
+  writeToConsole(): void {
     console.log(this._array);
-	}
+  }
 }
 
 const stack1 = new SimpleStack<number>();

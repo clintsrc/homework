@@ -1,3 +1,18 @@
+/*
+📐 Add Comments to the Implementation of the Login Route
+Work with a group to add comments describing the functionality of the /login route code found in Unsolved/src/routes/api/userRoutes.ts.
+
+📝 Notes
+Refer to the documentation:
+
+npm Documentation on bcrypt
+
+🏆 Bonus
+If you've completed this activity, work through the following challenge with your group to further your knowledge:
+
+How can we persist a login state?
+ */
+
 import dotenv from 'dotenv';
 dotenv.config();
 
