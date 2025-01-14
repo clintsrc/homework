@@ -36,12 +36,12 @@
  *    your partner to further your knowledge:
  *      Q: What are some other ways that you can implement client-side routing with a 
  *         Vite application?
- *      A: TODO
+ *      A: Next.js, vanilla javascript
  */
 
 import ReactDOM from 'react-dom/client';
 // Todo: Bring in the appropriate imports
-import { } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
@@ -55,6 +55,26 @@ import AboutPage from './pages/AboutPage';
 
 const router = createBrowserRouter([
   // Todo: Define the accessible routes, and which components respond to which URL
+  {
+    path: '/',
+    element: <App/>,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        index: true,
+        element: <HomePage/>,
+      },
+      {
+        path: '/about',
+        element: <AboutPage/>,
+      },
+      {
+        path: '/profile/:id',
+        element: <ProfilePage/>,
+        
+      }    
+    ]
+  }
 ]);
 
 // Render the RouterProvider component
