@@ -1,8 +1,18 @@
-// TODO: Fill in the Advertisement component below to include the three string fields `companyName`, `productDescription` and `price`.
+// TODO: Fill in the Advertisement component below to include the three string 
+// fields `companyName`, `productDescription` and `price`.
 
-function Advertisement() {
+interface AdvertisementProps {
+  companyName: string;
+  productDescription: string;
+  price: string;
+}
+
+function Advertisement({companyName, productDescription, price}: AdvertisementProps) {
   return (
     <div className="advertisement">
+      <p>{companyName}</p>
+      <p>{productDescription}</p>
+      <p>{price}</p>
     </div>
   );
 }

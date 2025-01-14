@@ -1,13 +1,27 @@
-// TODO: For the Calculator object below, create a state variable `calcState` containing the fields `total` and `previousTotal`.
-// Update `total` and `previousTotal` accordingly in the "Add" button handler below.
+// TODO: For the Calculator object below, create a state variable `calcState` 
+//    containing the fields `total` and `previousTotal`.
 
+// Update `total` and `previousTotal` accordingly in the "Add" button handler below.
 import { useState } from "react";
 
 export default function Calculator() {
-  const [calcState, setCalcState] = ;
+  //const [calcState, setCalcState] = ; // TODO
+  const [calcState, setCalcState] = useState<{ 
+    total: number;
+    previousTotal: number;
+  }>({ 
+    total: 0,
+    previousTotal: 0,
+  });
+
   const [value, setValue] = useState<number>(0);
 
   const handleAddClick = () => {
+    // TODO:
+    setCalcState( (prevState) => ({
+      total: prevState.total + value,
+      previousTotal: prevState.total,
+    }));
   };
 
   return (
