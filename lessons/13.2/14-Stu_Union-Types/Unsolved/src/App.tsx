@@ -1,34 +1,60 @@
-import './App.css';
+import "./App.css";
 
 function App() {
   const arr1: number[] = [1, 8, 3, 9, 2];
-  const arr2: string[] = ['yo-yo', 'jawbreaker', 'apple', 'quick'];
-  const str: string = 'Hello, world';
+  const arr2: string[] = ["yo-yo", "jawbreaker", "apple", "quick"];
+  const str: string = "Hello, world";
   const num: number = 42;
 
-  // TODO: Create a function that takes an array of numbers or strings, a string, or a number as an argument and returns the right most element of the array or string or the last digit of the number.
+  // TODO: Create a function that takes an array of numbers or strings, a string, or a
+  //  number as an argument and returns the right most element of the array or string
+  //  or the last digit of the number.
   // TODO: use union types instead of any.
-  function findRightMostValue(input: any) {
+  // Hint: How could we use the remainder operator to find the last digit of a number?
+  function findRightMostValue(
+    input: number[] | string[] | string | number
+  ): number | string | undefined {
     console.log(input);
-    return '. . ';
+    // handle either array type
+    if (Array.isArray(input)) {
+      return input[input.length - 1];
+    }
+    // handle a string
+    if ("string" === typeof input) {
+      return input.charAt(input.length - 1);
+    }
+    // return units value (remainder that's not divisible by 10)
+    if ("number" === typeof input) {
+      return input % 10;
+    }
+
+    return undefined;
   }
 
   return (
     <>
-      <h2><code>{`const arr1: number[] =  [${arr1}];`}</code></h2>
+      <h2>
+        <code>{`const arr1: number[] =  [${arr1}];`}</code>
+      </h2>
       {/* should be 2 */}
       <p>{`The right most value is ${findRightMostValue(arr1)}.`}</p>
-      <h2><code>{`const arr2: string[] =  [${arr2}];`}</code></h2>
+      <h2>
+        <code>{`const arr2: string[] =  [${arr2}];`}</code>
+      </h2>
       {/* should be 'quick' */}
       <p>{`The right most value is ${findRightMostValue(arr2)}.`}</p>
-      <h2><code>{`const str: string =  '${str}';`}</code></h2>
+      <h2>
+        <code>{`const str: string =  '${str}';`}</code>
+      </h2>
       {/* should be 'd' */}
       <p>{`The right most value is ${findRightMostValue(str)}.`}</p>
-      <h2><code>{`const num: number =  ${num};`}</code></h2>
+      <h2>
+        <code>{`const num: number =  ${num};`}</code>
+      </h2>
       {/* should be 2 */}
       <p>{`The right most value is ${findRightMostValue(num)}.`}</p>
     </>
-  )
+  );
 }
 
 export default App;

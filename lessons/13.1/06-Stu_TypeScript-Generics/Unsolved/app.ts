@@ -54,9 +54,9 @@ stack1.push(5);
 stack1.pop();
 stack1.writeToConsole(); // [ 3, 4 ]
 
-const stack2 = new SimpleStack<string>();
+const stack2 = new SimpleStack<string | number>();
 stack2.push('three');
 stack2.push('four');
 // stack2.push(5);
-stack2.push('5');
+stack2.push(5);
 stack2.writeToConsole(); // [ 'three', 'four', 5 ]

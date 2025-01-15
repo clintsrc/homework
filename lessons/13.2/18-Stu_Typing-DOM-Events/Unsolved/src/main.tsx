@@ -9,7 +9,9 @@
  *
  * 🏆 Bonus
  * Q: What is the React.SyntheticEvent type for, and when would you use it?
- * A: TODO
+ * A: React.SyntheticEvent is the base type for all DOM events. You can use that
+ *    for an event if it's not included here:
+ *      https://developer.mozilla.org/en-US/docs/Web/Events
  *
  */
 

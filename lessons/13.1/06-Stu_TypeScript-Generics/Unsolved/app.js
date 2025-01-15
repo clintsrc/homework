@@ -51,5 +51,5 @@ const stack2 = new SimpleStack();
 stack2.push('three');
 stack2.push('four');
 // stack2.push(5);
-stack2.push('5');
+stack2.push(5);
 stack2.writeToConsole(); // [ 'three', 'four', 5 ]

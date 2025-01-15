@@ -1,23 +1,28 @@
-import profilePic from '../assets/profile_placeholder.jpg';
+import profilePic from "../assets/profile_placeholder.jpg";
 
+// Define the Styles interface
+interface Styles {
+  card: React.CSSProperties;
+  heroImg: React.CSSProperties;
+  cardImg: React.CSSProperties;
+  cardArticle: React.CSSProperties;
+  cardH3: React.CSSProperties;
+  cardP: React.CSSProperties;
+}
 
-// TODO: Add the correct React interfaces/types to the style props
+type CardProps = {
+  styles: Styles;
+};
 
-
-// TODO: Uncomment once Styles are defined
-// type CardProps = { 
-//   styles: Styles
-// } 
-
-const ProfileCard = ({styles}: CardProps) => {
+const ProfileCard = ({ styles }: CardProps) => {
   return (
     <section style={styles.card}>
       <section style={styles.heroImg}>
-      <img
-        src={profilePic}
-        alt='man taking photograph of viewer, face is obscured by the camera'
-        style={styles.cardImg}
-      />
+        <img
+          src={profilePic}
+          alt="man taking photograph of viewer, face is obscured by the camera"
+          style={styles.cardImg}
+        />
       </section>
       <article style={styles.cardArticle}>
         <h3 style={styles.cardH3}>Amadi Tahel - Photographer</h3>
