@@ -32,8 +32,11 @@
  *
  * 🏆 Bonus
  * Q: How can you write to something marked as readonly?
- * A: TODO
- *
+ * A: You can't *directly* change a readonly property after it's initialized. Instead
+ *  you can:
+ * - Create a new interface object and set the property to the value that you want
+ * - Create an object that's mutable (non-readonly properties):
+ * 
  */
 
 import React from "react";

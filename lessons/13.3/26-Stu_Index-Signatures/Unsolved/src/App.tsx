@@ -7,10 +7,12 @@ import type Charge from './utils/interfaces/Charge';
 
 function App() {
   //TODO: What are we typing `invoice` as here?
+  //ANSWER: as an interface for the react state to enforce type safety on its properties.
   const [invoice, setInvoice] = useState<Invoice>({});
 
   const addItem = (title: string, charge: Charge) => {
     //TODO: What is this `if` statement doing?
+    //ANSWER: It checks whether that invoice ID already exists in order to prevent a duplicate
     if (invoice[title]) {
       alert(`entry already exists for ${title}, please use unique keys`);
       return;

@@ -1,10 +1,11 @@
 //TODO: import the Product interface
-import './style.css';
+import type Product from "../../../src/utils/interfaces/Product";
+import "./style.css";
 
 //TODO: update this component to use the `Product` interface to ensure type safety.
-function ProductCard(props) {
+function ProductCard(props: Product) {
   return (
-    <div className={`ProductCard ${props.quantity === 0 ? 'sold-out' : ''}`}>
+    <div className={`ProductCard ${props.quantity === 0 ? "sold-out" : ""}`}>
       <h2>{props.productName}</h2>
       <p>{props.productDescription}</p>
       <h3>Price: ${props.price.toFixed(2)}</h3>

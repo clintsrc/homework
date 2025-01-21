@@ -22,17 +22,21 @@ function InvoiceForm({ addItem }: Props) {
       return;
     }
     //TODO: why are we asserting this object is a `Charge`? What would happen if we did not assert the type?
+    //ANSWER: If you did not assert the type, TypeScript would infer the type of chargeData based on its properties. 
+    // If it cannot determine a specific type, it may default to any, which removes type safety.
     const chargeData = {
       billed: formData.charge.billed,
       price: parseFloat(formData.charge.rate) || 0,
     } as Charge;
     //TODO: What purpose does this `if` statement serve?
+    //ANSWER: To check whether the billed value hourly before making hourly calculations
     if (chargeData.billed === 'hourly') {
       chargeData.hours = parseInt(formData.charge.hours);
       chargeData.hourlyRate = chargeData.price;
       chargeData.price = chargeData.hours * chargeData.hourlyRate;
     }
     //TODO: Where is this function coming from?
+    //ANSWER: from the props passed to the InvoiceForm component.
     addItem(formData.title, chargeData);
     setFormData({
       title: '',

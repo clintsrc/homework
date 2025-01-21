@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import ProductCard from './components/ProductCard';
 //TODO: import the Product interface
+import type Product from './utils/interfaces/Product';
 import './App.css';
 import { getProducts } from './utils/API';
 
 function App() {
   //TODO: update this component to use the `Product` interface to ensure type safety.
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     getProducts().then((productData) => {
       setProducts(productData);

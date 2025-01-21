@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import type MailingFormData from '../../utils/interfaces/MailingList';
+import { useState } from "react";
+import type MailingFormData from "../../utils/interfaces/MailingList";
 import type {
   MailingEmail,
   MailingName,
-} from '../../utils/interfaces/MailingList';
-import './style.css';
+} from "../../utils/interfaces/MailingList";
+import "./style.css";
 
 function MailingListForm() {
   const [formData, setFormData] = useState<MailingFormData>({
-    name: '',
-    email: '',
+    name: "",
+    email: "",
   });
   const validName = (name: string): MailingName => {
     return name as MailingName;
@@ -28,26 +28,30 @@ function MailingListForm() {
     alert(`Thanks for signing up ${formData.name}! 
 We will reach out at ${formData.email}!`);
     setFormData({
-      name: '',
-      email: '',
+      name: "",
+      email: "",
     });
   };
   return (
-    <form className='MailingListForm' onSubmit={handleSubmit}>
-      <label htmlFor='mailing-name'>Name:</label>
+    <form className="MailingListForm" onSubmit={handleSubmit}>
+      <label htmlFor="mailing-name">Name:</label>
       <input
-        id='mailing-name'
-        type='text'
+        id="mailing-name"
+        type="text"
         value={formData.name}
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        onChange={(e) =>
+          setFormData({ ...formData, name: validName(e.target.value) })  // SOLN: add validName()
+        }
       />
 
-      <label htmlFor='mailing-email'>Email:</label>
+      <label htmlFor="mailing-email">Email:</label>
       <input
-        id='mailing-email'
-        type='text'
+        id="mailing-email"
+        type="text"
         value={formData.email}
-        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        onChange={(e) =>
+          setFormData({ ...formData, email: validEmail(e.target.value) })  // SOLN: add validEmail()
+        }
       />
       <button>Join Mailing List</button>
     </form>

@@ -55,7 +55,12 @@
  * 🏆 Bonus
  * Q: What are some of the advantages and disadvantages of nominal and
  *    structural typing?
- * A: TODO
+ * A: Structural typing can be more flexible initially: as long as the shape of the 
+ * variables are identical it will work. It also makes it less flexible for change: if 
+ * a change is needed for one of the variable types it will break because they are out 
+ * of alignment. Nominal types ensure that the types can be changed independently but
+ * it can also impose overhead for independent updates, especially if they aren't 
+ * likely to vary.
  *
  */
 

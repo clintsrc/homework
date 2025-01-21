@@ -16,7 +16,8 @@
  * 🏆 Bonus
  * Q: What other TypeScript features could you use to make index signatures more
  *    flexible or more strict?
- * A: TODO
+ * A: Unions and structural typing can heklp with flexibility, nominal typing
+ *    would help make it more strict
  *
  */
 
