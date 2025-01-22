@@ -1,22 +1,23 @@
 /*
-🏗️ Implement the PUT and DELETE Route Methods
-Work with a group to implement the following user story:
-
-As a bookstore owner, I want to be able to update and remove certain books of my choice from the inventory.
-Acceptance Criteria
-It's done when a book can be updated by ID.
-
-It's done when a book can be deleted by ID.
-
-📝 Notes
-Refer to the documentation:
-
-Sequelize Documentation on Model Querying Basics
-
-🏆 Bonus
-If you've completed this activity, work through the following challenge with your group to further your knowledge:
-
-Which SQL operators does Sequelize support?
+ * 🏗️ Implement the PUT and DELETE Route Methods
+ *
+ * Work with a group to implement the following user story:
+ * As a bookstore owner, I want to be able to update and remove certain books of my 
+ * choice from the inventory.
+ * 
+ * Acceptance Criteria
+ * It's done when a book can be updated by ID.
+ * It's done when a book can be deleted by ID.
+ * 
+ * 📝 Notes
+ * Refer to the documentation:
+ * 
+ * Sequelize Documentation on Model Querying Basics
+ * 
+ * 🏆 Bonus
+ * Q: Which SQL operators does Sequelize support?
+ * A: TODO
+ * 
  */
 
 const express = require('express');

@@ -1,1 +1,0 @@
-10.2.20: wrong asset image (dupe of 10.2.18)

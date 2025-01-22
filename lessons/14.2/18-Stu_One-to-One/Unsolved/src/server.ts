@@ -1,24 +1,21 @@
 /*
-📐 Add Comments to Implementation of a One-to-One Association
-Work with a group to add comments describing the functionality of the code found in the following files:
-
-Unsolved/models/index.ts
-
-Unsolved/models/LibraryCard.ts
-
-Unsolved/routes/api/readerRoutes.ts
-
-Unsolved/routes/api/libraryCardRoutes.ts
-
-📝 Notes
-Refer to the documentation:
-
-Sequelize Documentation on Associations
-
-🏆 Bonus
-If you've completed this activity, work through the following challenge with your group to further your knowledge:
-
-What is an entity relationship diagram (ERD)?
+ * 📐 Add Comments to Implementation of a One-to-One Association
+ *
+ * Work with a group to add comments describing the functionality of the code found in 
+ *  the following files:
+ * Unsolved/models/index.ts
+ * Unsolved/models/LibraryCard.ts
+ * Unsolved/routes/api/readerRoutes.ts
+ * Unsolved/routes/api/libraryCardRoutes.ts
+ * 
+ * 📝 Notes
+ * Refer to the documentation:
+ * Sequelize Documentation on Associations
+ * 
+ * 🏆 Bonus
+ * Q: What is an entity relationship diagram (ERD)?
+ * A: TODO
+ * 
  */
 
 import express from 'express';
