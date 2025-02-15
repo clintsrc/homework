@@ -60,6 +60,23 @@ app.put('/genres/:name', async (req, res) => {
   // TODO: Write a route that finds the first document that matches the specified route parameter
   // and updates it using the name provided in the request body.
   // Return the updated document
+  try {
+    const genre = await Genre.findOneAndUpdate(
+      { name: req.params.name }, // filter
+      { $set: req.body }, // update
+      { new: true } // updated doc
+    );
+
+    if (!genre) {
+      res.status(404).json({ message: 'No matching genre!' });
+    }    
+
+    res.status(200).json(genre);
+    console.log(`Updated: ${genre}`);
+  } catch (err: any) {
+    console.log("Error", err);
+    res.status(500).json({ message: err.message });
+  }
 });
 
 db.once('open', () => {
