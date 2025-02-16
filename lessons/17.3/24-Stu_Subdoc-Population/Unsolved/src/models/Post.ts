@@ -21,7 +21,8 @@ const postSchema = new Schema<IPost>(
     },
     tags: [
       {
-        type: 'Tag',
+        //type: 'Tag',  // invalid
+        type: Schema.Types.ObjectId,  // fixed: Use the schema objectid type when referencing another schema inside a Post schema
         ref: 'Tag',
       },
     ],
