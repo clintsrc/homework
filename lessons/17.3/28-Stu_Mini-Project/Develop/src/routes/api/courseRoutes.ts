@@ -9,7 +9,8 @@ import {
 } from '../../controllers/courseController.js';
 
 // /api/courses
-router.route('/').get(getAllCourses).post(createCourse);
+router.route('/').get(getAllCourses)
+  .post(createCourse);
 
 // /api/courses/:courseId
 router

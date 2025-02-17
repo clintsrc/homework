@@ -45,10 +45,12 @@ export const getCourseById = async (req: Request, res: Response) => {
  * @returns a single Course object
 */
 export const createCourse = async (req: Request, res: Response) => {
-    const { course } = req.body;
+    //const { course } = req.body;
+    const { name } = req.body;
     try {
       const newCourse = await Course.create({
-        course
+        //course
+        name
       });
       res.status(201).json(newCourse);
     } catch (error: any) {
@@ -65,17 +67,20 @@ export const createCourse = async (req: Request, res: Response) => {
 */
 export const updateCourse = async (req: Request, res: Response) => {
     try {
-      const course = await Course.findOneAndUpdate(
+      // const course = await Course.findOneAndUpdate(
+      const name = await Course.findOneAndUpdate(
         { _id: req.params.courseId },
         { $set: req.body },
         { runValidators: true, new: true }
       );
 
-      if (!course) {
+      // if (!course) {
+      if (!name) {
         res.status(404).json({ message: 'No course with this id!' });
       }
 
-      res.json(course)
+      // res.json(course)
+      res.json(name);
     } catch (error: any) {
       res.status(400).json({
         message: error.message
