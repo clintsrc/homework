@@ -1,0 +1,19 @@
+import db from '../connection.js';
+import { Thought } from '../models/index.js';
+import cleanDB from './cleanDB.js';
+
+import thoughtData from './thoughtData.json' assert { type: 'json' };
+
+try {
+  await db();
+  await cleanDB();
+
+  // bulk create each model
+  await Thought.insertMany(thoughtData);
+
+  console.log('Seeding completed successfully!');
+  process.exit(0);
+} catch (error) {
+  console.error('Error seeding database:', error);
+  process.exit(1);
+}
