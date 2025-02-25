@@ -21,6 +21,10 @@ const commentSchema = new Schema<IComment>(
       minlength: 1,
       maxlength: 280,
     },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     _id: false,

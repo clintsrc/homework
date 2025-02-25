@@ -1,6 +1,6 @@
 const typeDefs = `
   type Thought {
-    _id: ID
+    _id: ID!
     thoughtText: String
     thoughtAuthor: String
     createdAt: String
@@ -8,7 +8,7 @@ const typeDefs = `
   }
 
   type Comment {
-    _id: ID
+    _id: ID!
     commentText: String
     createdAt: String
   }

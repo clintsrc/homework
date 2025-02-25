@@ -8,7 +8,7 @@ import { getAllMatchups } from '../utils/api';
 // import { QUERY_MATCHUPS } from '../utils/queries';
 
 const Home = () => {
-  const [matchupList, setMatchupList] = useState([]);
+  const [matchupList, setMatchupList] = useState<Matchup[]>([]);
 
   useEffect(() => {
     const getMatchupList = async () => {

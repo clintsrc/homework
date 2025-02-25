@@ -1,4 +1,5 @@
 import { Thought, User } from '../models/index.js';
+import process from 'process';
 
 const cleanDB = async (): Promise<void> => {
   try {

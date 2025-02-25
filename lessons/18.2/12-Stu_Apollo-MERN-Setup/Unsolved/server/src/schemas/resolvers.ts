@@ -25,15 +25,15 @@ const resolvers = {
     thoughts: async () => {
       return await Thought.find().sort({ createdAt: -1 });
     },
-    thought: async (_parent: any, { thoughtId }: ThoughtArgs) => {
+    thought: async (_parent: unknown, { thoughtId }: ThoughtArgs) => {
       return await Thought.findOne({ _id: thoughtId });
     },
   },
   Mutation: {
-    addThought: async (_parent: any, { thoughtText, thoughtAuthor }: AddThoughtArgs) => {
+    addThought: async (_parent: unknown, { thoughtText, thoughtAuthor }: AddThoughtArgs) => {
       return await Thought.create({ thoughtText, thoughtAuthor });
     },
-    addComment: async (_parent: any, { thoughtId, commentText }: AddCommentArgs) => {
+    addComment: async (_parent: unknown, { thoughtId, commentText }: AddCommentArgs) => {
       return await Thought.findOneAndUpdate(
         { _id: thoughtId },
         {
@@ -45,10 +45,10 @@ const resolvers = {
         }
       );
     },
-    removeThought: async (_parent: any, { thoughtId }: ThoughtArgs) => {
+    removeThought: async (_parent: unknown, { thoughtId }: ThoughtArgs) => {
       return await Thought.findOneAndDelete({ _id: thoughtId });
     },
-    removeComment: async (_parent: any, { thoughtId, commentId }: RemoveCommentArgs) => {
+    removeComment: async (_parent: unknown, { thoughtId, commentId }: RemoveCommentArgs) => {
       return await Thought.findOneAndUpdate(
         { _id: thoughtId },
         { $pull: { comments: { _id: commentId } } },

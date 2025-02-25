@@ -1,4 +1,5 @@
 import { Thought } from '../models/index.js';
+import process from 'process';
 
 const cleanDB = async (): Promise<void> => {
   try {
@@ -6,7 +7,7 @@ const cleanDB = async (): Promise<void> => {
     await Thought.deleteMany({});
     console.log('Tought collection cleaned.');
 
-  } catch (err) {
+  } catch (err: unknown) {
     console.error('Error cleaning collections:', err);
     process.exit(1);
   }

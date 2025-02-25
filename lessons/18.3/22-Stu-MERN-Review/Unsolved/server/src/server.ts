@@ -1,5 +1,5 @@
 import express from 'express';
-import db from './connection.js';
+import db from './config/connection.js';
 
 // Import the ApolloServer class
 import { ApolloServer } from '@apollo/server';
