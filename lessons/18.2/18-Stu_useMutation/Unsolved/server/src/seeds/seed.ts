@@ -2,7 +2,7 @@ import db from '../config/connection.js';
 import { Thought } from '../models/index.js';
 import cleanDB from './cleanDB.js';
 
-import thoughtData from './thoughtSeeds.json' assert { type: 'json' };
+import thoughtData from './thoughtSeeds.json' with { type: 'json' };
 
 try {
   await db();

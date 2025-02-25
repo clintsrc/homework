@@ -4,7 +4,7 @@ import cleanDB from "./cleanDB.js";
 
 const { Tech } = models;
 
-import techData from './techData.json' assert { type: "json" };
+import techData from './techData.json' with { type: "json" };
 
 db.once('open', async () => {
   await cleanDB('Tech', 'teches');
