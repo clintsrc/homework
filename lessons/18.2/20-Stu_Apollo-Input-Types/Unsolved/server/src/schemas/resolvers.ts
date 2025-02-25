@@ -1,3 +1,20 @@
+/*
+  BONUS:
+  Q: What are the union and interface GraphQL types provided by Apollo Server? 
+  A: A union type allows a field handle multiple possible types without requiring 
+    a common set of fields.
+    Unions can be used when types are unrelated and don't share 
+    fields (e.g., Book | Author).
+
+  Q: What is an example of where they might be useful?
+  A: Interface types are similar unions but they require all of the implementing types
+    to share a common set of fields
+    Interface types can be used when multiple types share properties.
+    Interfaces types can be used when types share common fields but need additional 
+    unique properties (e.g., Notification).
+*/
+
+
 import { Thought } from '../models/index.js';
 
 // Define types for the arguments
@@ -30,12 +47,15 @@ const resolvers = {
     },
   },
   Mutation: {
-    addThought: async (
-      _parent: unknown,
-      { thoughtText, thoughtAuthor }: AddThoughtArgs
-    ) => {
-      return await Thought.create({ thoughtText, thoughtAuthor });
-    },
+    // addThought: async (
+    //   _parent: unknown,
+    //   { thoughtText, thoughtAuthor }: AddThoughtArgs
+    // ) => {
+    //   return await Thought.create({ thoughtText, thoughtAuthor });
+    // },
+    addThought: async (_parent: unknown, { input }: { input: AddThoughtArgs }) => {
+      return await Thought.create(input);
+    },    
     addComment: async (
       _parent: unknown,
       { thoughtId, commentText }: AddCommentArgs

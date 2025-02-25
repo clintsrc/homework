@@ -13,6 +13,7 @@ const typeDefs = `
     createdAt: String
   }
 
+  # For useQuery: define the Query type for the entry points
   type Query {
     thoughts: [Thought]!
     thought(thoughtId: ID!): Thought

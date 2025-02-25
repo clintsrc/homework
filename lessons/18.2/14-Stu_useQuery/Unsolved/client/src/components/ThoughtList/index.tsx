@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 interface Thought {
   _id: string;
   thoughtText: string;
@@ -23,7 +24,7 @@ const ThoughtList: React.FC<ThoughtListProps> = ({ thoughts, title }) => {
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {thought.thoughtAuthor} <br />
               <span style={{ fontSize: '1rem' }}>
-                had this thought on {thought.createdAt}
+                had this thought on {dayjs(Number(thought.createdAt)).format('MMMM D, YYYY [at] h:mm A')}
               </span>
             </h4>
             <div className="card-body bg-light p-2">
