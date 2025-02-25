@@ -1,3 +1,52 @@
+/*
+Update Professors to Include Their Classes
+As a user, I want to be able to query for professors and their classes at the same time.
+
+Acceptance Criteria
+It's done when a query in the Apollo Sandbox is able to return data similar to the following:
+"professors": [
+  {
+    "name": "Rebecca Watts",
+    "classes": [
+      {
+        "name": "Introduction to Computational Thinking"
+      },
+      {
+        "name": "User Interface Design"
+      },
+      {
+        "name": "Internet Architecture and Protocols"
+      }
+    ]
+  }
+]
+
+Example query:
+  query GetProfessorsWithClasses {
+    professors {
+      name
+      classes {
+        name
+      }
+    }
+  }
+
+BONUS:
+Q: What other types can be used in a GraphQL schema?
+A:
+  Scalars: Int, Float, String, Boolean, ID (and custom scalars).
+  Object Types: Defines a complex object with fields.
+  Query Types: Defines read operations.
+  Mutation Types: Defines write operations.
+  Subscription Types: Defines real-time data updates.
+  Enum Types: Restricts a field to predefined values.
+  Interface Types: Defines common fields that multiple types can implement.
+  Union Types: Represents a field that can return one of multiple types.
+  List Types: Represents an array of values.
+  Non-Null Types: Ensures a field is never null.
+  Input Types: Used for input values in mutations.
+  */
+
 import express from 'express';
 import db from './connection.js';
 

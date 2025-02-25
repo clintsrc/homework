@@ -3,9 +3,9 @@ import { Schema } from 'mongoose';
 import { School, Class, Professor } from '../models/index.js';
 import cleanDb from './cleanDb.js';
 
-import schoolData from './schoolData.json' assert { type: 'json' };
-import classData from './classData.json' assert { type: 'json' };
-import professorData from './professorData.json' assert { type: 'json' };
+import schoolData from './schoolData.json' with { type: 'json' };
+import classData from './classData.json' with { type: 'json' };
+import professorData from './professorData.json' with { type: 'json' };
 
 try {
   await db();

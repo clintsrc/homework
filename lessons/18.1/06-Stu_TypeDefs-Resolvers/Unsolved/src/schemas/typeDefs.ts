@@ -22,6 +22,7 @@ const typeDefs = `
     officeHours: String
     officeLocation: String
     studentScore: Float
+    classes: [Class]  # include the classes here
   }
 
   type Query {
