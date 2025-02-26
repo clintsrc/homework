@@ -1,3 +1,17 @@
+/* 
+  BONUS:
+  Q: What does the resolver's fourth positional argument of info do?
+  A: The info argument contains metadata about the query being executed (requested fields, the schema, 
+  and other runtime information).
+
+  But in most simple cases,it’s common to not use info unless you have a specific need for it, but 
+  otherwise it's typically used to:
+  - Determine which fields are requested: you can decide to return only the requested fields for 
+    optimization (e.g., for resolving only specific parts of a large object).
+  - Access the schema: inspect the structure of the schema and the query for validation or querying based on dynamic fields.
+  - Analyze the request: can be used to log or audit specific queries  
+*/
+
 import { Thought, User } from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js'; 
 
@@ -54,36 +68,49 @@ const resolvers = {
     thought: async (_parent: any, { thoughtId }: ThoughtArgs) => {
       return await Thought.findOne({ _id: thoughtId });
     },
-    me: async (_parent: any, context: any) => {
+    // Query to get the authenticated user's information
+    // The 'me' query relies on the context to check if the user is authenticated
+    me: async (_parent: any, _args: any, context: any) => {
+      // If the user is authenticated, find and return the user's information along with their thoughts
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('thoughts');
       }
+      // If the user is not authenticated, throw an AuthenticationError
       throw new AuthenticationError('Could not authenticate user.');
     },
   },
   Mutation: {
     addUser: async (_parent: any, { input }: AddUserArgs) => {
+      // Create a new user with the provided username, email, and password
       const user = await User.create({ ...input });
     
+      // Sign a token with the user's information
       const token = signToken(user.username, user.email, user._id);
     
+      // Return the token and the user
       return { token, user };
     },
     login: async (_parent: any, { email, password }: LoginUserArgs) => {
+      // Find a user with the provided email
       const user = await User.findOne({ email });
-
+    
+      // If no user is found, throw an AuthenticationError
       if (!user) {
         throw new AuthenticationError('Could not authenticate user.');
       }
-
+    
+      // Check if the provided password is correct
       const correctPw = await user.isCorrectPassword(password);
-
+    
+      // If the password is incorrect, throw an AuthenticationError
       if (!correctPw) {
         throw new AuthenticationError('Could not authenticate user.');
       }
-
+    
+      // Sign a token with the user's information
       const token = signToken(user.username, user.email, user._id);
-
+    
+      // Return the token and the user
       return { token, user };
     },
     addThought: async (_parent: any, { input }: AddThoughtArgs, context: any) => {

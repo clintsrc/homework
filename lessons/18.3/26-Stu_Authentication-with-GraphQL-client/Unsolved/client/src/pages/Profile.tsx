@@ -18,8 +18,15 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
   
   // TODO: What is this if condition checking?
+  /* Checks whether the current logged-in user is trying to access their own profile 
+    page (if it matches userParam). */
 if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
   // TODO: Why is it navigating to the "/me" route?
+  /* Navigate to the /me route to redirect the user to their own profile page when when 
+  they use a url that matches their username. 
+  It directs the user to their own profile instead of displaying an incorrect or empty 
+  profile page
+  */
   return <Navigate to="/me" />;
 }
 

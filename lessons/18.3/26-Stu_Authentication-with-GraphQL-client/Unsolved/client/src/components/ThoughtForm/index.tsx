@@ -51,7 +51,11 @@ const ThoughtForm = () => {
   return (
     <div>
       <h3>What's on your techy mind?</h3>
-      { /* TODO: What's the Auth.loggedIn() doing here? */}
+      { /* 
+          TODO: What's the Auth.loggedIn() doing here? 
+          Check if the user is logged in. If the user is authenticated, they can 
+          submit a thought; otherwise, they are prompted to log in or sign up.
+      */}
       {Auth.loggedIn() ? (
         <>
           <p
