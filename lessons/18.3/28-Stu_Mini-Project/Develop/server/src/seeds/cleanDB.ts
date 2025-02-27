@@ -1,10 +1,10 @@
-import models from '../models/index.js';
+import { Tech, Matchup } from '../models/index.js';
 import db from '../config/connection.js';
 
 export default async (modelName: "Tech" | "Matchup", collectionName: string) => {
   try {
     // Ensure the model exists in the models object
-    const model = models[modelName];
+    const model = { Tech, Matchup }[modelName];
     if (!model) {
       throw new Error(`Model ${modelName} does not exist.`);
     }
@@ -24,4 +24,4 @@ export default async (modelName: "Tech" | "Matchup", collectionName: string) => 
   } catch (err) {
     throw err;
   }
-}
+};
