@@ -3,18 +3,22 @@ import { cleanup } from '@testing-library/react';
 import { setupServer } from 'msw/node';
 import { handlers } from '../mocks/userRoutes';
 
-// TODO: declare a new instance of the msw server named server using the setupServer function and pass in the handlers from the userRoutes file
+// Declare the MSW server instance using setupServer with the imported handlers
+const server = setupServer(...handlers);
 
-// TODO: Uncomment the beforeAll, afterEach, and afterAll functions below once the handlers have been set up
-// beforeAll(() => {
-//     server.listen();
-// });
+// Set up the MSW server before the tests run
+beforeAll(() => {
+    server.listen(); // Start the server before all tests
+});
 
-// afterEach(() => {
-//     cleanup();
-//     server.resetHandlers();
-// });
+// Clean up after each test and reset any request handlers to avoid test interference
+afterEach(() => {
+    cleanup();
+    server.resetHandlers(); // Reset any runtime request handlers to the original ones
+});
 
-// afterAll(() => {
-//     server.close();
-// });
+// Close the server after all tests are done
+afterAll(() => {
+    server.close(); // Close the server after all tests
+});
+0

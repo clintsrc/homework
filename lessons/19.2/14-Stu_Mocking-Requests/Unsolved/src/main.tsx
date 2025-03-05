@@ -4,10 +4,11 @@ import App from './App.tsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 async function enableMocking() {
-  if(process.env.NODE_ENV !== 'development') {
+  //TA Mike made the following change
+  // if(process.env.NODE_ENV !== 'development') {
+  if(import.meta.env.MODE !== 'development') {
     return;
   }
-
   const { worker } = await import('./mocks/browser');
 
   return worker.start();
