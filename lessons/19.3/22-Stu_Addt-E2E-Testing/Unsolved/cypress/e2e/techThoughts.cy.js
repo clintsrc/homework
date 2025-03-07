@@ -10,8 +10,10 @@ describe('Tech Thoughts Website', () => {
 
   it('should display a card on the screen if data is retrieved', () => {
     // TODO: Fill in test logic where test passes if a card is visible.
+    // components/ThoughtList/index.tsx: <div key={thought._id} className="card mb-3">
+    cy.get('.card').should('be.visible');
   });
-
+  
   it('should display the correct number of cards based on data retrieved', () => {
     cy.get('.card .card-body').should(($el) => {
       const cards = $el.map((i, el) => {
@@ -29,7 +31,15 @@ describe('Tech Thoughts Website', () => {
   });
 
   it('should not display any Comments on the page', () => {
-    // TODO: Fill in test logic where Comments should NOT display anywhere. 
+    // TODO: Fill in test logic where Comments should NOT display anywhere.
+    cy.get('container main .card .card-body').should(($el) => {
+      const cards = [
+        ...$el.map((i, el) => {
+          return Cypress.$(el).text();
+        })
+      ].filter((text) => !text.includes("Comments"));
+      expect(cards).length(0);
+    })
   });
 
 });

@@ -16,7 +16,7 @@ describe('Tech Thoughts Website via Fixtures', () => {
     cy.wait('@mockPostRequest').then((intercept) => {
       assert.isNotNull(intercept.response?.body, '1st API call has data');
       // Uncomment below to see the response body from mocked API call.
-      // console.log(intercept.response?.body);
+      console.log(intercept.response?.body);
       expect(intercept.response?.body).to.have.property('thoughtAuthor', 'Jennifer');
     })
   })
