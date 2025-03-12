@@ -2,7 +2,7 @@ interface AdvertisementProps {
   companyName: string;
   productDescription: string;
   price: string;
-};
+}
 
 function Advertisement(props: AdvertisementProps) {
   return (

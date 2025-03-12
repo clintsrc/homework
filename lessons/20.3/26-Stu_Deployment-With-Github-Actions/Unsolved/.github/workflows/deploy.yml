@@ -1,7 +1,9 @@
 #TODO: What is this line of code doing
+# Provides the name of the workflow
 name: Deploy
 
 #TODO: What is this block of code doing
+# Triggers this workflow for pull requests targeting main and also any pushes to main
 on:
     push:
       branches: [main]
@@ -9,19 +11,31 @@ on:
       branches:
         - main
         
-#TODO: What is this block of code doing   
+#TODO: What is this block of code doing  
+# These are the actions that will be executed for the triggers
 jobs:
     ci:
+      # Specifies the container ("OS") to use for the job
       runs-on: ubuntu-latest
+
+      # These steps are executed for the 'ci' job
       steps:
+        # Checkout the repo's source
         - uses: actions/checkout@v3
 
+        # Install the module dependencies then execute the tests
         - name: Test
           run: |
             npm install
             npm run test
 
+        # Deploy the build to Render using the specified hook, its sensitive value 
+        # is securely stored in github secrets
         - name: Deploy
+          # Filters on the main branch here at the step level to ensure that the 
+          # deployment will only happen on main branch updates. If another branch were 
+          # added at the workflow filter level, e.g. 'develop', this would make sure 
+          # that updates to develop wouldn't trigger the deployment.
           if: github.ref == 'refs/heads/main'
           env:
             DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
