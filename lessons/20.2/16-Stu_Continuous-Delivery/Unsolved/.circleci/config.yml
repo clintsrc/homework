@@ -4,6 +4,17 @@ orbs:
   cypress: cypress-io/cypress@3.3.1
 
 jobs:
+  start-server:
+        docker:
+          - image: cypress/base:latest
+        steps:
+          - checkout
+          - run:
+              name: Install dependencies
+              command: npm install
+          - run:
+              name: Build the app
+              command: npm run build
   deploy-to-render-staging:
     docker:
       - image: cimg/base:current
@@ -11,6 +22,7 @@ jobs:
       - run:
           name: Deploy to Render Staging
           # TODO: What is happening in the following command?
+          # CircleCI uses a curl command with a special deployment url issued by Render to publish the CircleCI build
           command: |
             echo "Deploying to Render Staging"
             curl $RENDER_STAGING_DEPLOYHOOK
@@ -28,10 +40,12 @@ workflows:
           cypress-command: npx cypress run --component
       - deploy-to-render-staging:
           # TODO: What does the requires key do?
+          # It specifies a dependency required befor this job, in this case the cypress component tests must run first
           requires:
             - run-e2e-tests
             - run-component-tests
           # TODO: What does the filters key do?
+          # This limits the current job to only run when there are changes to the main branch
           filters:
             branches:
               only: main
