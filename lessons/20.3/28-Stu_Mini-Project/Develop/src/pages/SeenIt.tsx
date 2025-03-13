@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import FilmsAlreadySeen from '../components/FilmsAlreadySeen';
 import type Film from '../utils/interfaces/Film.interface';
 
+//const bogus_variable = "lint error";	// bonus
+
 const SeenIt = () => {
   const [alreadyWatchedFilms, setAlreadyWatchedFilms] = useState<Film[]>([]);
 
