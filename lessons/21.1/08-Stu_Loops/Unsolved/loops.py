@@ -34,7 +34,7 @@ while True:
                 break
             elif user_play == 'y':
                 # Reset the user_number and start the loop again
-                user_number = 0
+                #user_number = 0    # this would always loop the message 0 times!
                 break
             elif user_play == 'q':
                 # Exit the game
@@ -49,7 +49,6 @@ while True:
 
     # Loop through the numbers.
     for i in range(user_number):
-
         # Print the number in the range and the message
         print(i + 1, message_to_print)
 
@@ -61,4 +60,5 @@ while True:
     play_again = input("Would you like to play again? (y/n): ")
     if play_again.lower() != 'y':
         print("Goodbye!")
-        continue
+        #continue   # why would you want to continue the loop?!
+        break
