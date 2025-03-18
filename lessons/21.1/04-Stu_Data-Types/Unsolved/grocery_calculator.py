@@ -20,9 +20,9 @@ def product(item="eggs", price=6.29, tax=6.5, quantity=1):
 if __name__ == "__main__":
     while True:
         product_name = input("Enter the name of the product you want to purchase: ")
-        product_quantity = input(
+        product_quantity = int( input(
             "How many items of " + product_name + " would you like?: "
-        )
+        ))
         while not product_quantity.isdigit():
             product_quantity = input("Please enter a valid number. ")
 
