@@ -18,6 +18,8 @@ If you have completed this activity, work through the following challenge with y
 
 * Add a ruler to VS Code to visually mark the PEP 8 recommended maximum line length of 79 characters.
 
+* Read more on PEP 8 recommendations from the [Docs](https://peps.python.org/pep-0008/).
+
 * Install a Python linter extension like [Flake8](https://marketplace.visualstudio.com/items?itemName=ms-python.flake8) in VS Code.
 
 Use [Google](https://www.google.com) or another search engine to research this.
