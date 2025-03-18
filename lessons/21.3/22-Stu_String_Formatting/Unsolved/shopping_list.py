@@ -1,3 +1,13 @@
+"""
+BONUS: 
+Q: What does the .format() string method do?
+A: It is used to create formatted strings without having to manually 
+    concatenate them by using placeholders. Here the {} indicates where the
+    values should be inserted. The values are passed as arguments to .format():
+
+   "string with {} placeholders".format(values)
+"""
+
 """This script represents a shopping list"""
 
 # Define the shopping list collection globally
@@ -23,33 +33,47 @@ def show_list():
         for item_name, item in shopping_list.items():
             if "price" in item:
                 # TODO: What does this line do?
+                # Use f-string to show the float price with two decimal
+                # places (padded as needed), and commas (for the thousands
+                # place)
                 price = f'${item["price"]:,.2f}'
             else:
                 price = "unknown"
 
             # TODO: What does this line do?
+            # Add the f-string formatted item to the current formatted list
+            # to include the item name, quantity, and price
             formatted_items.append(f"{item_name}: {item['quantity']} @ "
                                    f"{price} each")
 
             # TODO: What do these two lines do?
+            # Check if the current item is longer than the current 
+            # max_print_length by retrieving the last item in the formatted_items
+            # list and checking its length against the current max_print_length
             if len(formatted_items[-1]) > max_print_length:
                 max_print_length = len(formatted_items[-1])
 
     # TODO: What does this line do?
+    # Repeats the '-' character multiple times up to the max_print_length + 4
+    # to create a visual border for the shopping list
     border_string = "-" * (max_print_length + 4)
 
     # TODO: What does this line do?
+    # Display the top border
     print(border_string)
     # TODO: What does this line do?
+    # Add a header for the list showing a centered "Shopping List"
     print("|" + "Shopping List:".center(max_print_length + 2) + "|")
     print(border_string)
 
     for item in formatted_items:
         if len(item) < max_print_length:
             # TODO: What does this line do?
+            # Use f-string to print the space to pad the item to the max_print_length
             print(f"| {item.ljust(max_print_length)} |")
         else:
             # TODO: What does this line do?
+            # Use f-string to print the item with between two vertical bars
             print(f"| {item} |")
     print(border_string)
 

@@ -1,3 +1,15 @@
+"""
+BONUS:
+Q:
+* Can you convert the menu from if/elif to match case?
+  (See below)
+* Are there other string methods that weren't explicitly demonstrated that could be useful?
+A: Here are a few:
+split() — Instead of manually parsing the input string, split(",") would cleanly separate multiple names.
+join() — Could be handy if you ever want to recombine names into a single string, though not strictly needed here.
+casefold() — Similar to lower() but more aggressive with handling case-insensitive matching across languages.
+"""
+
 """This script demonstrates how to create a user management system"""
 
 users = {}
@@ -70,10 +82,10 @@ if __name__ == "__main__":
         choice = int(choice)
 
         # Check if the user's choice is in the menu
-        if choice in menu:
+        match choice:
             # Check the user's choice
             # 1 - Create a new user
-            if choice == 1:
+            case 1:
                 print("To enter multiple users, separate the values with a comma.")
                 # Get the user's input for the new user
                 names = input("Enter the name(s): ")
@@ -86,7 +98,7 @@ if __name__ == "__main__":
                 # Create a new user
                 create_user(names)
             # 2 - Remove a user
-            elif choice == 2:
+            case 2:
                 print("If you don't know the user's name, view all users first.\nType 'view' to view all users.")
                 # Get the user's input for the user to remove
                 name = input("Enter the name of the user to remove: ")
@@ -101,12 +113,12 @@ if __name__ == "__main__":
                 # Remove a user
                 remove_user(name)
             # 3 - View all users
-            elif choice == 3:
+            case 3:
                 # View all users
                 view_users()
             # 4 - Exit
-            elif choice == 4:
+            case 4:
                 # Exit the program
                 break
-        else:
-            print("Invalid choice. Please try again.")
+            case _:
+            	print("Invalid choice. Please try again.")

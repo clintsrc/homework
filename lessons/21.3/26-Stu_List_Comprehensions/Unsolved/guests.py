@@ -4,11 +4,10 @@
 def get_total_guests(guests):
     """Calculate the total number of guests"""
     # TODO: Use list comprehension to calculate the total number of guests
-
+    total = sum([guest["party_number_adults"] + guest["party_number_children"] for guest in guests])
 
     # TODO: Return the total number of guests
-
-
+    return total
 
 def get_guest_list(guests):
     """Create a list of strings containing the invitation name and family name
@@ -16,10 +15,13 @@ def get_guest_list(guests):
     # TODO: Use list comprehension to create a list of strings
     # TODO: Each string should contain the invitation name and family name
     # TODO: The invitation name and family name should be separated by a space
-
+    guest_list = [f"{guest['invitation_name']} {guest['family_name']}" for guest in guests]
+    
+    # BONUS: an example of a dictionary comprehension:
+    #guests_dict = {guest["invitation_name"]: guest["party_number_adults"] + guest["party_number_children"] for guest in guests}
 
     # TODO: Return the guest list
-
+    return guest_list
 
 # Do not edit the code below this line
 if __name__ == "__main__":
