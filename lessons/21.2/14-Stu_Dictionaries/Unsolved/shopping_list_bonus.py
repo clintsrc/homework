@@ -14,36 +14,32 @@ shopping_list = {}
 
 
 # Define the add_item function
-def add_item(item_name, quantity):
+def add_item(item_name, quantity, price):
     """Add an item to the shopping list""" 
 
-    # TODO: Check if the item is already in the shopping list
-    # TODO: Print a message indicating the item was added to the shopping list
     if item_name in shopping_list:
-        # TODO: If the item exists, add the quantity to the existing quantity
-        shopping_list[item_name] += quantity
-        print(f"Updated item {item_name} to add {quantity} more.")
+        shopping_list[item_name]["quantity"] += quantity
+        print(f"Updated {item_name} to add {shopping_list[item_name]['quantity']} more.")
     else:
-        # TODO: If the item does not exist, add the item to the shopping list
-        shopping_list[item_name] = quantity
-        print(f"Created new entry for {quantity} {item_name}(s).")
-
+        shopping_list[item_name] = {"price": price, "quantity": quantity}
+        print(f"Created new entry for {quantity} {item_name}(s) at ${price:.2f}.")
+    show_list()
+        
 # Define the remove_item function
 def remove_item(item_name, quantity):
     """Remove an item from the shopping list"""
 
-    # TODO: Check if the item is in the shopping list
-    # TODO: Print messages about the item being removed or not being in the list
     if item_name in shopping_list:
-        # TODO: Reduce the quantity or remove the item from the shopping list
-        current_quantity = shopping_list[item_name]
+        current_quantity = shopping_list[item_name]["quantity"]
+        print(f"Current quantity: {current_quantity}")
         # Don't go negative! delete the item instead of reducing
         if current_quantity <= quantity:
             print(f"Removed {item_name}(s) from the list.")
             del shopping_list[item_name]
         else:
-            shopping_list[item_name] -= quantity
+            shopping_list[item_name]["quantity"] -= quantity
             print(f"Removed {quantity} {item_name}(s) from the list.")
+        show_list()
     else:
         print(f"No {item_name}(s) were found in the list. No changes were made.")
 
@@ -85,24 +81,20 @@ if __name__ == "__main__":
             if choice == "1":
                 item_name = input("Enter the item name to add: ")
                 quantity = int(input("Enter the quantity: "))
+                price = float(input("Enter the item price: $"))
                 
-                # TODO: Create a dictionary with the user input
-                item_data = {"item_name": item_name, "quantity": quantity}
+                item_data = {"item_name": item_name, "quantity": quantity, "price": price}
 
-                # TODO: Call the add_item function with the dictionary
-                # TODO: Use dictionary unpacking
                 add_item(**item_data)
 
-            # 2 - Remove item
+            # 2 - Remove item2
+            
             elif choice == "2":
                 item_name = input("Enter the item name to remove: ")
                 quantity = int(input("Enter the quantity to remove: "))
 
-                # TODO: Create a dictionary with the user input
                 item_data = {"item_name": item_name, "quantity": quantity}
 
-                # TODO: Call the remove_item function with the dictionary
-                # TODO: Use dictionary unpacking
                 remove_item(**item_data)
 
             # 3 - Show list

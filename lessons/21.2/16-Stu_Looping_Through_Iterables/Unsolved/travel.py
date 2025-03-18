@@ -20,7 +20,7 @@ def print_cities_and_costs(cities, cities_daily_cost):
     # Use a for loop to loop through both of the lists at the same time, since
     # they're the same length, and append a sentence to the sentences list
     # in the format "Daily cost of {city} is ${city_daily_cost}"
-    for city, cost in cities_daily_cost, cities:
+    for city, cost in zip(cities, cities_daily_cost):
         sentences.append(f"Daily cost of {city} is ${cost}")
 
     # Return the list of sentences
@@ -39,7 +39,7 @@ def update_costs(cities, cities_daily_cost):
         return None
 
     # Combine enumerate() and zip() to loop through the index and both lists.
-    for index, (city, cost) in zip(cities, cities_daily_cost):
+    for index, (city, cost) in enumerate(zip(cities, cities_daily_cost)):
         # Print the city and cost.
         print(f"City: {city}, Cost: {cost}")
         update = input("Would you like to update the cost? (y/n): ")
@@ -67,6 +67,18 @@ def compare_len(list1, list2):
         return False
     return True
 
+# # BONUS
+# def insert_city_and_cost(cities, cities_daily_cost):
+#     """
+#     This function allows the user to insert a new city and cost into the lists.
+#     """
+#     city_name = input("Enter the city name to add: ")
+#     daily_cost = int(input("Enter the daily cost for this city: "))
+#     # Insert the new city and cost at the desired position (start of the list)
+#     cities.insert(0, city_name)
+#     cities_daily_cost.insert(0, daily_cost)
+#     print(f"Added new city {city_name} with daily cost ${daily_cost}")
+
 
 if __name__ == "__main__":
     # Define the cities and daily costs.
@@ -80,7 +92,7 @@ if __name__ == "__main__":
     # Check if the result is not None.
     if result:
         # Print the cities and costs.
-        while sentence in result:
+        for sentence in result:
             print(sentence)
 
         # Ask the user if they want to update the costs.
@@ -91,5 +103,14 @@ if __name__ == "__main__":
             result = print_cities_and_costs(cities, new_costs)
             for sentence in result:
                 print(sentence)
+
+        # # BONUS
+        # insert = input("Would you like to add a new city and cost? (y/n): ")
+        # if insert.lower() == "y":
+        #     insert_city_and_cost(cities, cities_daily_cost)
+        #     result = print_cities_and_costs(cities, cities_daily_cost)
+        #     for sentence in result:
+        #         print(sentence)
+
     else:
         print("Error: Unable to print cities and costs.")
