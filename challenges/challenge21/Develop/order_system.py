@@ -1,10 +1,53 @@
+"""
+place_order() function 40%
+The place_order() function must have:
+
+A continuous loop that continues displaying the menu and asking the customer what they want until the customer quits ordering. (6 points)
+
+A nested loop that loops through the menu dictionary to display the menu category and item followed by the price. (10 points)
+
+A conditional statement that asks the customer if they want to continue ordering and exits the continuous loop if they type 'n' or 'N'. (6 points)
+
+A list comprehension that calculates the total price for each order item by multiplying the quantity by the price. (8 points)
+
+A sum() calculation with the list comprehension to calculate the total order price, rounded to 2 decimal places. (4 points)
+
+A return statement that returns the customer's order in a list of dictionaries and the total order price. (6 points)
+
+update_order() function 45%
+The update_order() function must have:
+
+A conditional statement that checks if the customer's input string can be converted to an integer and prints an error message if it does not. (6 points)
+
+Type casting to convert the customer's input string to an integer. (4 points)
+
+A conditional statement that checks if the customer's input is an item on the menu and prints an error message if it is not. (6 points)
+
+A prompt to the customer that prints the name of the menu item to the user and asks the quantity they would like to order. (4 points)
+
+A conditional statement that checks if the input quantity can be converted to an integer, then converts it to an integer, and defaults to 1 if it does not. (10 points)
+
+The order list is updated with the customer's item name, price, and quantity stored in a dictionary. (10 points)
+
+The updated order list is returned from the function. (5 points)
+
+print_itemized_receipt() function 15%
+The print_itemized_receipt() function must have:
+
+A loop that loops through each element of the order list. (5 points)
+
+The item name, price, and quantity from each dictionary in the order list are stored as variables. (5 points)
+
+The item name, price, and quantity are sent to the print_receipt_line function in the correct order. (5 points)
+"""
+
 def place_order(menu):
     """
     Displays a restaurant menu, asks customers for their order, then returns
     their receipt and total price.
 
     Parameters:
-    menu (dictionary): A nested dictionary containing the menu items and their 
+    menu (dictionary): A nested dictionary containing the menu items and their
                        prices, using the following format:
                         {
                             "Food category": {
@@ -29,7 +72,7 @@ def place_order(menu):
 
     place_order = True
     # TODO: Create a continuous while loop so customers can order multiple items
-    
+
         # TODO: Loop through the menu dictionary, extracting the food category and
         # the options for each category
 
@@ -38,7 +81,7 @@ def place_order(menu):
                 # TODO: Print the menu item number, food category, meal, and price
 
                 # TODO: Update the menu selection number
-                
+
 
         # Ask customer to input menu item number
         menu_selection = input("Type menu number: ")
@@ -70,7 +113,7 @@ def place_order(menu):
             place_order = False
 
     # TODO: Return the order list and the order total
-    
+
 
 
 def update_order(order, menu_selection, menu_items):
@@ -88,36 +131,36 @@ def update_order(order, menu_selection, menu_items):
     order (list): A list of dictionaries containing the menu item name, price,
                     and quantity ordered (updated as needed).
     """
-    # TODO: Check if the customer's input string can be converted 
+    # TODO: Check if the customer's input string can be converted
     # to an integer and prints an error message if it does not
 
-    
+
         # TODO: Convert the menu selection to an integer
 
 
-        # TODO: Write a conditional statement that checks if the customer's input is 
+        # TODO: Write a conditional statement that checks if the customer's input is
         # an item on the menu and prints an error message if it is not
-        
+
             # Store the item name as a variable
             item_name = menu_items[menu_selection]["Item name"]
 
-            # TODO: A prompt (input) to the customer that prints the name of the 
+            # TODO: A prompt (input) to the customer that prints the name of the
             # menu item to the user and asks the quantity they would like to order.
             # Store the return in a quantity variable
-            
 
-            # TODO: Write a conditional statement that checks if the input quantity 
-            # can be converted to an integer, then converts it to an integer. 
+
+            # TODO: Write a conditional statement that checks if the input quantity
+            # can be converted to an integer, then converts it to an integer.
             # Have it default to 1 if it does not.
 
 
-            # TODO: Add a dictionary with the item name, price, and quantity to the 
+            # TODO: Add a dictionary with the item name, price, and quantity to the
             # order list. Use the following names for the dictionary keys:
             # "Item name", "Price", "Quantity"
-            
+
 
     # TODO: Return the updated order
-    
+
 
 
 def print_itemized_receipt(receipt):
@@ -132,13 +175,13 @@ def print_itemized_receipt(receipt):
     #print(receipt)
 
     # TODO: Loop through the items in the customer's receipt
-    
+
         # TODO: Store the dictionary items ("Item name", "Price", "Quantity") as variables
-        
+
 
         # TODO: Print the receipt line using the print_receipt_line function
         # send the item name, price, and quantity as separate arguments
-        
+
 
 ##################################################
 #  STARTER CODE
@@ -219,7 +262,7 @@ def print_menu_line(index, food_category, meal, price):
 
 def get_menu_items_dict(menu):
     """
-    Creates a dictionary of menu items and their prices mapped to their menu 
+    Creates a dictionary of menu items and their prices mapped to their menu
     number.
 
     Parameters:
