@@ -36,8 +36,8 @@ toy_library = [
         "toy": "Best Toy Ever",
         "type": "Electronic",
         "status": "Checked Out",
-        "checkout_date": "04/18/2020",
-        "due_date": "05/18/2020",
+        "checkout_date": "2025-03-18",
+        "due_date": "2025-04-18",
         "checkout_count": 1,
         "replacement_cost": 29.99
     }
@@ -75,37 +75,41 @@ def add_toy():
 #     Add a new toy
 
 # TODO: Define the remove_toy function
-def remove_toy():
-    print("remove_toy - TODO")
-    # Remove a toy
-    # Use listname.pop() to return the toy (dictionary) that was removed.
+def remove_toy(index):
+    # pop returns the item that was removed
+    removed = toy_library.pop(index)
+    print(f"Removing Toy {removed}")
+    return [removed]
 
 # TODO: Define the print library function
 def print_library(status=None, view_details=False):
-    print("Toy Library:")
+    print("==== Toy Library ====")
+
+    # filter items by (optional) status parameter
     if status:
+        # listcomp iterates through toys to add items with a  given 
+        # status (e.g. available) to populate a filtered list
         filtered_toys = [toy for toy in toy_library if toy["status"] == status]
     else:
+        # None means the 'filtered' list is actually all items and not really 
+        # filtered at all
         filtered_toys = toy_library
 
     for index, toy in enumerate(filtered_toys):
         # Add 1 to the index output to make the display friendlier
         print(f"{index + 1}. {toy['toy']}: {toy['status']}")
+        # Show detail on (optional) view_details parameter
         if view_details:
-            print("TODO")
-# print_library(status=None, view_details=False):
-#     status="Availble"
-#         list comprehension filter toy_library by status
-#             Loop through the (filtered) toy library
-#             print the index, name of the toy, and its status
-#     view_details=True
-#         print the remaining dictionary values
+            print(f"\tType: {toy['type']}")
+            print(f"\tCheckout Count: {toy['checkout_count']}")
+            print(f"\tReplacement Cost: {toy['replacement_cost']}")
+            # Checkout info
+            if "checked out" == toy['status'].lower():
+                print(f"\t** Checkout Date: {toy['checkout_date']} **")
+                print(f"\t** Due Date: {toy['due_date']} **")
+
+            
 # ##### View Library #####
-    # print_library()
-    #     for each item (all items) in the toy_library print:
-    #         index
-    #         toy name
-    #         status
 # ##### View DETAILED Library #####
     # print_library(view_details=True)
     #     for each item (all items) in the toy_library print:
@@ -183,7 +187,12 @@ if __name__ == "__main__":
             elif choice == '5':
                 add_toy()
             elif choice == '6':
-                remove_toy()
+                print_library()
+                index = input("Enter the toy to remove (\"Enter\" for Main menu): ")
+                if "" == index:
+                    continue
+                remove_toy(0)   # todo
+                print_library() # show the updated catalog
             elif choice == '7':
                  # Exit the program
                 break
