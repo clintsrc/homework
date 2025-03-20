@@ -27,6 +27,8 @@ def place_order(menu):
     # Launch the store and present a greeting to the customer
     print("Welcome to the Generic Take Out Restaurant.")
 
+    print("What would you like to order?\n")
+
     place_order = True
     # Create a continuous while loop so customers can order multiple items
     while place_order:
@@ -38,13 +40,12 @@ def place_order(menu):
             # meal and the price
             for meal, price in items.items():
                 # Print the menu item number, food category, meal, and price
-                print(f"[{menu_item}] {category} - {meal}: ${price} ")
+                print_menu_line(menu_item, category, meal, price)
                 # Update the menu selection number
                 menu_item += 1
 
-
         # Ask customer to input menu item number
-        menu_selection = input("Type menu number: ")
+        menu_selection = input("Type menu number: Enter quantity\n")
 
         # Update the order list using the update_order function
         # Send the order list, menu selection, and menu items as arguments
@@ -52,14 +53,14 @@ def place_order(menu):
 
         # Ask the customer if they would like to order anything else
         # Let the customer know if they should type 'n' or 'N' to quit
-        keep_ordering = input("Would you like to keep ordering? ('N' to quit): ")
+        keep_ordering = input("Would you like to keep ordering? (N) to quit:\n")
 
         # Write a conditional statement that checks if the customer types
         # 'n' or 'N'
         if keep_ordering.lower() == 'n':
             # Since the customer decided to stop ordering, thank them for
             # their order
-            print("Thank you for your order.")
+            print("Thank you for your order.\n")
 
             # Use a list comprehension to create a list called prices_list,
             # which contains the total prices for each item in the order list:
@@ -109,7 +110,7 @@ def update_order(order, menu_selection, menu_items):
             # menu item to the user and asks the quantity they would like to order.
 
             # Store the return in a quantity variable
-            quantity = input(f"Enter quantity {item_name}: ")
+            quantity = input(f"What quantity of {item_name} would you like?\n")
 
             # Write a conditional statement that checks if the input quantity
             # can be converted to an integer, then converts it to an integer.
@@ -125,11 +126,12 @@ def update_order(order, menu_selection, menu_items):
             # "Item name", "Price", "Quantity"
             order.append({"Item name": item_name, "Price": price, "Quantity": quantity})
         else:
-            print("Invalid menu selection")
+            print(f"WARNING: {menu_selection} was not a menu option.")
+    else:
+        print(f"WARNING: {menu_selection} was not a menu option.")
 
     # Return the updated order
     return order
-
 
 
 def print_itemized_receipt(receipt):
