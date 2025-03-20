@@ -45,11 +45,6 @@ def place_order(menu):
 
         # Ask customer to input menu item number
         menu_selection = input("Type menu number: ")
-        if menu_selection.isdigit():
-            menu_selection = int(menu_selection)
-        else:
-            print("Invalid Input.")
-            continue    # back to the start of the loop
 
         # Update the order list using the update_order function
         # Send the order list, menu selection, and menu items as arguments
@@ -97,35 +92,43 @@ def update_order(order, menu_selection, menu_items):
     order (list): A list of dictionaries containing the menu item name, price,
                     and quantity ordered (updated as needed).
     """
-    # TODO: Check if the customer's input string can be converted
+    # Check if the customer's input string can be converted
     # to an integer and prints an error message if it does not
+    if menu_selection.isdigit():
+        # Convert the menu selection to an integer
+        menu_selection = int(menu_selection)
 
-
-        # TODO: Convert the menu selection to an integer
-
-
-        # TODO: Write a conditional statement that checks if the customer's input is
+        # Write a conditional statement that checks if the customer's input is
         # an item on the menu and prints an error message if it is not
-
+        if menu_selection in menu_items:
             # Store the item name as a variable
-#            item_name = menu_items[menu_selection]["Item name"]
+            item_name = menu_items[menu_selection]["Item name"]
+            price = menu_items[menu_selection]["Price"]
 
-            # TODO: A prompt (input) to the customer that prints the name of the
+            # A prompt (input) to the customer that prints the name of the
             # menu item to the user and asks the quantity they would like to order.
+
             # Store the return in a quantity variable
+            quantity = input(f"Enter quantity {item_name}: ")
 
-
-            # TODO: Write a conditional statement that checks if the input quantity
+            # Write a conditional statement that checks if the input quantity
             # can be converted to an integer, then converts it to an integer.
             # Have it default to 1 if it does not.
+            if quantity.isdigit():
+                quantity = int(quantity)
+            else:
+                print(f"WARNING: Invalid quantity {quantity}, quantity is now: 1")
+                quantity = 1
 
-
-            # TODO: Add a dictionary with the item name, price, and quantity to the
+            # Add a dictionary with the item name, price, and quantity to the
             # order list. Use the following names for the dictionary keys:
             # "Item name", "Price", "Quantity"
+            order.append({"Item name": item_name, "Price": price, "Quantity": quantity})
+        else:
+            print("Invalid menu selection")
 
-
-    # TODO: Return the updated order
+    # Return the updated order
+    return order
 
 
 
