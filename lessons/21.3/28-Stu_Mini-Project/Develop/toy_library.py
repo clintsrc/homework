@@ -95,7 +95,7 @@ def return_toy():
             # Already Available
             return False
         else:
-            print(f"Invalid input: {checkout_input}")
+            print(f"Invalid input: {checkin_input}")
 
 # TODO: Define the add_toy function
 def add_toy(toy_name, toy_type="", status="Available", replacement_cost=0.0):
