@@ -27,11 +27,13 @@ def place_order(menu):
     # Launch the store and present a greeting to the customer
     print("Welcome to the Generic Take Out Restaurant.")
 
-    print("What would you like to order?\n")
+    #print("What would you like to order? ")
 
     place_order = True
     # Create a continuous while loop so customers can order multiple items
     while place_order:
+        print("What would you like to order? ")
+        print_menu_heading()
         # Loop through the menu dictionary, extracting the food category and
         # the options for each category
         menu_item = 1
@@ -53,7 +55,7 @@ def place_order(menu):
 
         # Ask the customer if they would like to order anything else
         # Let the customer know if they should type 'n' or 'N' to quit
-        keep_ordering = input("Would you like to keep ordering? (N) to quit:\n")
+        keep_ordering = input("Would you like to keep ordering? (N) to quit: ")
 
         # Write a conditional statement that checks if the customer types
         # 'n' or 'N'
@@ -110,7 +112,7 @@ def update_order(order, menu_selection, menu_items):
             # menu item to the user and asks the quantity they would like to order.
 
             # Store the return in a quantity variable
-            quantity = input(f"Enter quantity (This will default to 1 if number is not entered) ")
+            quantity = input(f"What quantity of {item_name} would you like? ")
 
             # Write a conditional statement that checks if the input quantity
             # can be converted to an integer, then converts it to an integer.
@@ -118,7 +120,7 @@ def update_order(order, menu_selection, menu_items):
             if quantity.isdigit():
                 quantity = int(quantity)
             else:
-                print(f"WARNING: Invalid quantity {quantity}, quantity is now: 1")
+                print("(This will default to 1 if number is not entered)\n")
                 quantity = 1
 
             # Add a dictionary with the item name, price, and quantity to the
@@ -126,7 +128,7 @@ def update_order(order, menu_selection, menu_items):
             # "Item name", "Price", "Quantity"
             order.append({"Item name": item_name, "Price": price, "Quantity": quantity})
         else:
-            print(f"{menu_selection} was not a menu option.")
+            print(f"Sorry, that number isn't an option.")
     else:
         print(f"{menu_selection} was not a menu option.")
 
@@ -151,12 +153,16 @@ def print_itemized_receipt(receipt):
         # Store the dictionary items ("Item name", "Price", "Quantity") as variables
         item_name = receipt_items["Item name"]
         price = receipt_items["Price"]
-        qauntity = receipt_items["Quantity"]
+        quantity = receipt_items["Quantity"]
 
 
         # Print the receipt line using the print_receipt_line function
         # send the item name, price, and quantity as separate arguments
-        print_receipt_line(item_name, price, qauntity)
+        print_receipt_line(item_name, price, quantity)
+
+
+
+
 
 ##################################################
 #  STARTER CODE
