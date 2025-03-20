@@ -38,7 +38,7 @@ def place_order(menu):
             # meal and the price
             for meal, price in items.items():
                 # Print the menu item number, food category, meal, and price
-                print(f"[{menu_item}] {category}, {meal}: ${price} ")
+                print(f"[{menu_item}] {category} - {meal}: ${price} ")
                 # Update the menu selection number
                 menu_item += 1
 
@@ -52,7 +52,7 @@ def place_order(menu):
 
         # Ask the customer if they would like to order anything else
         # Let the customer know if they should type 'n' or 'N' to quit
-        keep_ordering = input("Would you like to keep ordering? (N) to quit: ")
+        keep_ordering = input("Would you like to keep ordering? ('N' to quit): ")
 
         # Write a conditional statement that checks if the customer types
         # 'n' or 'N'
@@ -143,14 +143,18 @@ def print_itemized_receipt(receipt):
     # Uncomment the following line if you need to check the structure of the receipt
     #print(receipt)
 
-    # TODO: Loop through the items in the customer's receipt
+    # Loop through the items in the customer's receipt
+    for receipt_items in receipt:
 
-        # TODO: Store the dictionary items ("Item name", "Price", "Quantity") as variables
+        # Store the dictionary items ("Item name", "Price", "Quantity") as variables
+        item_name = receipt_items["Item name"]
+        price = receipt_items["Price"]
+        qauntity = receipt_items["Quantity"]
 
 
-        # TODO: Print the receipt line using the print_receipt_line function
+        # Print the receipt line using the print_receipt_line function
         # send the item name, price, and quantity as separate arguments
-
+        print_receipt_line(item_name, price, qauntity)
 
 ##################################################
 #  STARTER CODE
