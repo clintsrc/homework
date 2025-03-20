@@ -45,7 +45,7 @@ def place_order(menu):
                 menu_item += 1
 
         # Ask customer to input menu item number
-        menu_selection = input("Type menu number: Enter quantity\n")
+        menu_selection = input("Type menu number: ")
 
         # Update the order list using the update_order function
         # Send the order list, menu selection, and menu items as arguments
@@ -110,7 +110,7 @@ def update_order(order, menu_selection, menu_items):
             # menu item to the user and asks the quantity they would like to order.
 
             # Store the return in a quantity variable
-            quantity = input(f"What quantity of {item_name} would you like?\n")
+            quantity = input(f"Enter quantity (This will default to 1 if number is not entered) ")
 
             # Write a conditional statement that checks if the input quantity
             # can be converted to an integer, then converts it to an integer.
@@ -126,9 +126,9 @@ def update_order(order, menu_selection, menu_items):
             # "Item name", "Price", "Quantity"
             order.append({"Item name": item_name, "Price": price, "Quantity": quantity})
         else:
-            print(f"WARNING: {menu_selection} was not a menu option.")
+            print(f"{menu_selection} was not a menu option.")
     else:
-        print(f"WARNING: {menu_selection} was not a menu option.")
+        print(f"{menu_selection} was not a menu option.")
 
     # Return the updated order
     return order
