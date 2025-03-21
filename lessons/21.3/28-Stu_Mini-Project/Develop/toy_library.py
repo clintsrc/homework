@@ -48,7 +48,9 @@ toy_library = [
 def checkout_toy():
     print_library(status="Available")
 
-    checkout_input = input("Enter a toy to checkout ([Enter] to return to the main menu): ").strip()
+    checkout_input = input(
+        "Enter a toy to checkout ([Enter] to return to the main menu): "
+    ).strip()
     if not checkout_input:
         print("Cancelled")
     else:
@@ -58,7 +60,9 @@ def checkout_toy():
                 toy_library[index]["status"] = "Checked Out"
 
                 # Checked out today %Y-%m-%d would be 20255-
-                toy_library[index]["checkout_date"] = datetime.datetime.now().strftime("%Y-%m-%d")
+                toy_library[index]["checkout_date"] = datetime.datetime.now().strftime(
+                    "%Y-%m-%d"
+                )
                 # calculate 2 weeks from now
                 due_date = datetime.datetime.now() + datetime.timedelta(weeks=2)
                 # set the calculated due date
@@ -74,11 +78,14 @@ def checkout_toy():
         else:
             print(f"Invalid input: {checkout_input}")
 
+
 # TODO: Define the return_toy function
 def return_toy():
     print_library(status="Checked Out")
 
-    checkin_input = input("Enter a toy to return ([Enter] to return to the main menu): ").strip()
+    checkin_input = input(
+        "Enter a toy to return ([Enter] to return to the main menu): "
+    ).strip()
     if not checkin_input:
         print("Cancelled")
     else:
@@ -95,7 +102,8 @@ def return_toy():
             # Already Available
             return False
         else:
-            print(f"Invalid input: {checkout_input}")
+            print(f"Invalid input: {index}")
+
 
 # TODO: Define the add_toy function
 def add_toy(toy_name, toy_type="", status="Available", replacement_cost=0.0):
@@ -104,16 +112,19 @@ def add_toy(toy_name, toy_type="", status="Available", replacement_cost=0.0):
         "type": toy_type,
         "status": status,
         "checkout_count": 0,
-        "replacement_cost": replacement_cost
+        "replacement_cost": replacement_cost,
     }
     toy_library.append(toy_data)
     print(f"Added the new Toy {toy_name}")
+
 
 # TODO: Define the remove_toy function
 def remove_toy():
     print_library()
 
-    remove_input = input("Enter a toy to remove ([Enter] to return to the main menu): ").strip()
+    remove_input = input(
+        "Enter a toy to remove ([Enter] to return to the main menu): "
+    ).strip()
     if not remove_input:
         print("Cancelled")
     else:
@@ -126,6 +137,7 @@ def remove_toy():
             return [removed]
         else:
             print(f"Invalid input {remove_input}")
+
 
 # TODO: Define the print library function
 def print_library(status=None, view_details=False):
@@ -153,13 +165,16 @@ def print_library(status=None, view_details=False):
                 print(f"\t** Checkout Date: {toy['checkout_date']} **")
                 print(f"\t** Due Date: {toy['due_date']} **")
 
+
 # BONUS
 def update_toy():
     """Update an existing toy."""
 
     print_library()
 
-    update_input = input("Enter the toy to update ([Enter] to return to the main menu): ").strip()
+    update_input = input(
+        "Enter the toy to update ([Enter] to return to the main menu): "
+    ).strip()
     if not update_input:
         print("Cancelled")
     else:
@@ -171,27 +186,31 @@ def update_toy():
 
             new_name = input(f"Name ([Enter] to keep '{toy['toy']}'): ")
             if new_name:
-                toy['toy'] = new_name
+                toy["toy"] = new_name
 
             new_type = input(f"Type ([Enter] to keep '{toy['type']}'): ")
             if new_type:
-                toy['type'] = new_type
+                toy["type"] = new_type
 
             # Limit the status to Available or Checked Out
-            new_status = input(f"Status (Available/Checked Out) ([Enter] to keep '{toy['status']}'): ")
+            new_status = input(
+                f"Status (Available/Checked Out) ([Enter] to keep '{toy['status']}'): "
+            )
             if new_status:
                 new_status = new_status.lower()
-                if new_status in ['available', 'checked out']:
-                    toy['status'] = new_status.title()
+                if new_status in ["available", "checked out"]:
+                    toy["status"] = new_status.title()
             # Available status needs to have cleared dates
-            if "available" == toy['status'].lower():
-                toy['checkout_date'] = ""
-                toy['due_date'] = ""
+            if "available" == toy["status"].lower():
+                toy["checkout_date"] = ""
+                toy["due_date"] = ""
 
-            new_cost = input(f"Replacement cost ([Enter] to keep '{toy['replacement_cost']}'): ")
+            new_cost = input(
+                f"Replacement cost ([Enter] to keep '{toy['replacement_cost']}'): "
+            )
             if new_cost:
                 try:
-                    toy['replacement_cost'] = float(new_cost)
+                    toy["replacement_cost"] = float(new_cost)
                 except ValueError:
                     print("Invalid cost. No changes made.")
 
@@ -211,6 +230,7 @@ def check_if_index_in_library(input_item):
         if 0 <= input_item < len(toy_library):  # Ensure index is within list's range
             return input_item  # Return a valid index
     return None
+
 
 # Define the main function
 if __name__ == "__main__":
@@ -253,9 +273,13 @@ if __name__ == "__main__":
             elif choice == "5":
                 toy_name = input("Enter Toy name: ")
                 toy_type = input("Enter Toy type ([Enter] to skip): ")
-                replacement_cost = input("Enter Toy's price value ([Enter] to skip): 0.00")
+                replacement_cost = input(
+                    "Enter Toy's price value ([Enter] to skip): 0.00"
+                )
                 try:
-                    replacement_cost = float(replacement_cost) if replacement_cost else 0.00
+                    replacement_cost = (
+                        float(replacement_cost) if replacement_cost else 0.00
+                    )
                 except ValueError:
                     print("Invalid price. Setting to $0.0.")
                     replacement_cost = 0.0
