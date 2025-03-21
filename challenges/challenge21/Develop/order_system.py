@@ -27,24 +27,22 @@ def place_order(menu):
     # Launch the store and present a greeting to the customer
     print("Welcome to the Generic Take Out Restaurant.")
 
-    #print("What would you like to order? ")
-
     place_order = True
     # Create a continuous while loop so customers can order multiple items
     while place_order:
-        print("What would you like to order? ")
-        print_menu_heading()
         # Loop through the menu dictionary, extracting the food category and
         # the options for each category
-        menu_item = 1
-        for category, items in menu.items():
+        print("What would you like to order? ")
+        print_menu_heading()
+        item_number = 1
+        for category, options in menu.items():
             # Loop through the options for each food category, extracting the
             # meal and the price
-            for meal, price in items.items():
+            for meal, price in options.items():
                 # Print the menu item number, food category, meal, and price
-                print_menu_line(menu_item, category, meal, price)
-                # Update the menu selection number
-                menu_item += 1
+                print_menu_line(item_number, category, meal, price)
+                #Update the menu selection number
+                item_number += 1
 
         # Ask customer to input menu item number
         menu_selection = input("Type menu number: ")
@@ -55,14 +53,15 @@ def place_order(menu):
 
         # Ask the customer if they would like to order anything else
         # Let the customer know if they should type 'n' or 'N' to quit
-        keep_ordering = input("Would you like to keep ordering? (N) to quit: ")
+        keep_ordering = input("\nWould you like to keep ordering? (N) to quit: ")
 
         # Write a conditional statement that checks if the customer types
         # 'n' or 'N'
-        if keep_ordering.lower() == 'n':
+        if 'n' == keep_ordering.lower():
+
             # Since the customer decided to stop ordering, thank them for
             # their order
-            print("Thank you for your order.\n")
+            print("Thank you for your order.")
 
             # Use a list comprehension to create a list called prices_list,
             # which contains the total prices for each item in the order list:
@@ -72,12 +71,14 @@ def place_order(menu):
             # Create an order_total from the prices list using sum()
             # and round the prices to 2 decimal places.
             order_total = round(sum(prices_list), 2)
+
             # Write a break statement or set the condition to False to exit
             # the ordering loop
             place_order = False
 
     # Return the order list and the order total
     return order, order_total
+
 
 
 def update_order(order, menu_selection, menu_items):
@@ -98,8 +99,10 @@ def update_order(order, menu_selection, menu_items):
     # Check if the customer's input string can be converted
     # to an integer and prints an error message if it does not
     if menu_selection.isdigit():
+
         # Convert the menu selection to an integer
         menu_selection = int(menu_selection)
+
 
         # Write a conditional statement that checks if the customer's input is
         # an item on the menu and prints an error message if it is not
@@ -110,17 +113,21 @@ def update_order(order, menu_selection, menu_items):
 
             # A prompt (input) to the customer that prints the name of the
             # menu item to the user and asks the quantity they would like to order.
-
             # Store the return in a quantity variable
-            quantity = input(f"What quantity of {item_name} would you like? ")
+
+            # quantity_input = input(f"What quantity of {item_name} would you like?\n(This will default to 1 if number is not entered)")
+            # - Type menu number: What quantity of Burrito - Chicken would you like?
+            # + Type menu number: What quantity of Burrito - Chicken would you like?
+            # ?                                                                     +
+            # + (This will default to 1 if number is not entered)
+            quantity_input = input(f"What quantity of {item_name} would you like? \n(This will default to 1 if number is not entered)")
 
             # Write a conditional statement that checks if the input quantity
             # can be converted to an integer, then converts it to an integer.
             # Have it default to 1 if it does not.
-            if quantity.isdigit():
-                quantity = int(quantity)
+            if quantity_input.isdigit():
+                quantity = int(quantity_input)
             else:
-                print("(This will default to 1 if number is not entered)\n")
                 quantity = 1
 
             # Add a dictionary with the item name, price, and quantity to the
@@ -128,12 +135,16 @@ def update_order(order, menu_selection, menu_items):
             # "Item name", "Price", "Quantity"
             order.append({"Item name": item_name, "Price": price, "Quantity": quantity})
         else:
-            print(f"Sorry, that number isn't an option.")
+            # not on menu
+            print(f"{menu_selection} was not a menu option.")
     else:
+        # not integer
         print(f"{menu_selection} was not a menu option.")
+
 
     # Return the updated order
     return order
+
 
 
 def print_itemized_receipt(receipt):
@@ -148,21 +159,16 @@ def print_itemized_receipt(receipt):
     #print(receipt)
 
     # Loop through the items in the customer's receipt
-    for receipt_items in receipt:
+    for receipt_item in receipt:
 
-        # Store the dictionary items ("Item name", "Price", "Quantity") as variables
-        item_name = receipt_items["Item name"]
-        price = receipt_items["Price"]
-        quantity = receipt_items["Quantity"]
+        # TODO: Store the dictionary items ("Item name", "Price", "Quantity") as variables
+        item_name = receipt_item["Item name"]
+        price = receipt_item["Price"]
+        quantity = receipt_item["Quantity"]
 
-
-        # Print the receipt line using the print_receipt_line function
+        # TODO: Print the receipt line using the print_receipt_line function
         # send the item name, price, and quantity as separate arguments
         print_receipt_line(item_name, price, quantity)
-
-
-
-
 
 ##################################################
 #  STARTER CODE
@@ -358,5 +364,4 @@ if __name__ == "__main__":
 
     # Print the receipt footer with the total price
     print_receipt_footer(total_price)
-
 
