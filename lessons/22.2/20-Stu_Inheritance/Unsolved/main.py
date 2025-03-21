@@ -1,4 +1,21 @@
 """
+BONUS
+Q: Look up how Python inheritance and polymorphism are different. Then, think
+    about what types of subclasses would you create for room discounts using
+    polymorphism.
+A:
+Inheritance allows a subclass to inherit attributes and methods from a
+    superclass, promoting code reuse.
+Polymorphism allows subclasses to override methods from the superclass,
+    enabling different behaviors for the same method in different contexts.
+
+For room discounts, you could create subclasses like SeasonalDiscount,
+    MembershipDiscount, and CorporateDiscount, each implementing a specific
+    discount calculation. Polymorphism allows dynamic application of the
+    appropriate discount strategy at runtime.
+"""
+
+"""
 This program allows a customer to book
 a room for a specified number of nights.
 """
