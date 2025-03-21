@@ -52,21 +52,12 @@ class Reservation:
             with open(self.file_path, 'w', encoding='utf-8') as file:
                 json.dump({"rooms": self.rooms}, file, indent=4)
         except OSError as e:
-            print(f"An unexpected error occurred while saving rooms: {e}")
+            print(f"Error: Failed to save rooms due to an unexpected error: {e}")
 
     def display_rooms(self):
-        """
-        Displays the list of available rooms.
-
-        Prints the room type, availability, and price for each room.
-        """
-        if not self.rooms:
-            print("No room data available.")
-            return
-        print("Rooms available:")
-        print("______________")
+        """ Display available rooms to the user. """
+        print("\nAvailable Rooms:")
         for room in self.rooms:
-            room_type = room['type'].capitalize()
-            price = room['price']
-            available = room['available']
-            print(f"{room_type}: {available} left at ${price}")
+            if room["available"] > 0:
+                print(f"{room['type'].capitalize()} Room - ${room['price']} per night, "
+                      f"{room['available']} available")

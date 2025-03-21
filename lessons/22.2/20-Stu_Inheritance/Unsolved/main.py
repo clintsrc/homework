@@ -4,6 +4,7 @@ a room for a specified number of nights.
 """
 from rooms import Reservation
 # TODO: Import the Customer class
+from customers import Customer
 
 
 def display_available_rooms():
@@ -57,8 +58,8 @@ def confirm_booking(customer):
         confirmation = input(
             f"Confirm booking for {customer.first_name} {customer.last_name}, "
             f"{customer.room_type.capitalize()} room, "
-            f"{customer.nights} nights at ${customer.room['price']}"
-            f" per night? (Y/N): ").strip().upper()
+            f"{customer.nights} nights at ${customer.room['price']} "
+            f"per night? (Y/N): ").strip().upper()
         if confirmation == "Y":
             total_cost = customer.nights * customer.room['price']
             print("\nBooking confirmed!")
