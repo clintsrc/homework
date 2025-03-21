@@ -3,10 +3,11 @@ This program validates the email address and password.
 And, creates a student ID from the first and last name.
 """
 # TODO: Import the sys module.
+import sys
 
 
 # TODO: Define the validation() function with email and password.
-def validation():
+def validation(email, password):
     """
     Validates the email address and password.
 
@@ -27,16 +28,19 @@ def validation():
     # the email and password.
     try:
         # TODO: Check if the email address is valid.
-
+        if "@" not in email:
             # TODO: Raise a ValueError if the email address is invalid and
             # add a "Invalid email." message.
+            raise ValueError("Invalid email.")
 
         # TODO: Check if the password is at least 8 characters long
-
+        if len(password) < 8:
             # TODO: Raise a ValueError if the password is invalid.
-            # add a "Invalid email." message.
+            # add a "Password must be at least 8 characters long." message.
+            raise ValueError("Password must be at least 8 characters long.")
 
         # TODO: Return the email and password if they are valid.
+        return email, password
 
     # Catch any ValueError exceptions and print an error message.
     except ValueError as e:
@@ -44,10 +48,11 @@ def validation():
         print(f"\nError: {e}")
         # TODO: Use the sys.exit() function to exit the program
         # and print the reason why.
-xw
+        sys.exit(f"Exiting program due to: {e}")
+
 
 # TODO: Define the create_ID() function with first and last name.
-def create_id():
+def create_id(first_name, last_name):
     """
     This function creates a student ID from the first and last name.
     Parameters:
@@ -57,8 +62,13 @@ def create_id():
     Returns:
     - str: The student ID.
     """
-    # TODO: Create a a base ID by joining the lowercase
+    # TODO: Create a base ID by joining the lowercase
     # TODO: first initial in the first name with the lowercase last name,
+    base_id = first_name[0].lower() + last_name.lower()
+
     # TODO: Create the student ID by adding the base ID to the
-    # TODO: length of the first name plus the length last name to the base ID.
+    # TODO: length of the first name plus the length of the last name to the base ID.
+    student_id = base_id + str(len(first_name) + len(last_name))
+
     # TODO: Return the student ID to the function call.
+    return student_id
