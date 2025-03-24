@@ -1,39 +1,88 @@
-class PriceCalculator:
-    """
-    A class responsible for calculating the price of an item.
-    """
+"""
+BONUS
+Q: How could you extend the PriceCalculator to handle more complex pricing
+    rules or additional item types?
+A: Extend the PriceCalculator to handle more complex pricing rules or
+    additional item types by introducing strategy patterns or additional
+    methods for specific calculations. For example:
+    - Pricing Strategies: Implement different pricing strategies as separate
+        classes, like PercentageDiscountStrategy or BuyOneGetOneFreeStrategy,
+        and pass these strategies to the PriceCalculator.
+    - Dynamic Parameters: Add optional parameters for taxes, bulk discounts,
+        or seasonal promotions, allowing the calculator to handle diverse
+        pricing rules without needing changes to item classes.
+    - Item-Specific Logic: Use subclasses of PriceCalculator for each item
+        type to encapsulate logic unique to that type while preserving shared
+        calculation methods in the base class.
+    - Pipeline Approach: Implement a pipeline where different calculation
+        steps (e.g., base price, shipping, discounts, taxes) are applied in
+        sequence, making the pricing flow more modular and adaptable.
 
-    def __init__(self, base_price, shipping_fee=0, discount=0):
-        """
-        Initialize the price calculator with a base price,
-        shipping fee, and discount.
+    This separation of concerns makes the system more flexible, easier to
+    maintain, and open for extension while adhering to the Open/Closed
+    Principle.
+"""
 
-        :param base_price: The base price of the item.
-        :param shipping_fee: The shipping fee for the item, default is 0.
-        :param discount: The discount applied to the item, default is 0.
+from abc import ABC, abstractmethod
+
+# TODO: Create an abstract class called Item.
+class Item(ABC):
+    """
+    Abstract base class for items in the shopping cart.
+    """
+    @abstractmethod
+    def calculate_total_price(self):
         """
+        Calculate the total price of the item.
+        """
+        pass
+
+# TODO: Update the PhysicalItem to inherit from the Item class.
+class PhysicalItem(Item):
+    """
+    Represents a physical item with a base price and shipping fee.
+    """
+    def __init__(self, base_price, shipping_fee):
         self.base_price = base_price
         self.shipping_fee = shipping_fee
+
+    def calculate_total_price(self):
+        """
+        Calculate the total price of the physical item.
+        :return: Total price including shipping fee.
+        """
+        return self.base_price + self.shipping_fee
+
+# TODO: Update the DigitalItem to inherit from the Item class.
+class DigitalItem(Item):
+    """
+    Represents a digital item with only a base price.
+    """
+    def __init__(self, base_price):
+        self.base_price = base_price
+
+    def calculate_total_price(self):
+        """
+        Calculate the total price of the digital item.
+        :return: Total price without any additional fees.
+        """
+        return self.base_price
+
+# TODO: Update the GiftCard classes to inherit from the Item class.
+class GiftCard(Item):
+    """
+    Represents a gift card with a base price and discount.
+    """
+    def __init__(self, base_price, discount):
+        self.base_price = base_price
         self.discount = discount
 
     def calculate_total_price(self):
         """
-        Calculate the total price of the item after applying the shipping
-        fee and discount.
-
-        :return: The total price of the item.
+        Calculate the total price of the gift card after applying the discount.
+        :return: Total price after discount.
         """
-        return self.base_price + self.shipping_fee - self.discount
-
-
-# TODO: Create a PhysicalItem class that contains a PriceCalculator instance.
-
-
-# TODO: Create a DigitalItem class that contains a PriceCalculator instance.
-
-
-# TODO: Create a GiftCard class that contains a PriceCalculator instance.
-
+        return self.base_price - self.discount
 
 class ShoppingCart:
     """
@@ -60,22 +109,18 @@ class ShoppingCart:
         """
         return sum(item.calculate_total_price() for item in self.items)
 
-
 # Test the ShoppingCart with different items
 if __name__ == "__main__":
     cart = ShoppingCart()
 
-    # Add a physical item with a shipping fee
-    laptop_price_calculator = PriceCalculator(1000, 50)
-    # TODO: Create a PhysicalItem instance and add it to the cart.
+    # TODO: Add a physical item with a shipping fee to the cart
+    cart.add_item(PhysicalItem(100, 10))  # Base price: $100, Shipping fee: $10
 
-    # Add a digital item with no shipping fee
-    ebook_price_calculator = PriceCalculator(20)
-    # TODO: Create a DigitalItem instance and add it to the cart.
+    # TODO: Add a digital item with no shipping fee to the cart
+    cart.add_item(DigitalItem(50))  # Base price: $50
 
-    # Add a gift card with a discount
-    gift_card_price_calculator = PriceCalculator(100, discount=10)
-    # TODO: Create a GiftCard instance and add it to the cart.
+    # TODO: Add a gift card with a discount to the cart
+    cart.add_item(GiftCard(30, 5))  # Base price: $30, Discount: $5
 
     # Calculate and print the total cost of the cart
     total = cart.calculate_total()

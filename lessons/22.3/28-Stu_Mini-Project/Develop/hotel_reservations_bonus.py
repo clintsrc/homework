@@ -1,3 +1,12 @@
+"""
+BONUS
+Can you add a menu option to show a report of the following information?
+The total count of available rooms
+The total count of reserved rooms
+A list of available rooms with their details
+A list of reserved rooms with their details
+"""
+
 """This script represents a hotel reservation system"""
 
 from abc import ABC, abstractmethod
@@ -141,6 +150,26 @@ class Hotel:
                 return
         print(f"No reservation found for Room {room_number}.")
 
+    def show_report(self):
+        """Prints a report of the available and reserved rooms."""
+        # Total count of available and reserved rooms
+        print(f"Total Available Rooms: {len(self.available_rooms)}")
+        print(f"Total Reserved Rooms: {len(self.reservations)}\n")
+
+        # List of available rooms with details
+        print("Available Rooms:")
+        if not self.available_rooms:
+            print("No rooms available.")
+        for room in self.available_rooms:
+            print(room.get_details())
+
+        # List of reserved rooms with details
+        print("\nReserved Rooms:")
+        if not self.reservations:
+            print("No rooms reserved.")
+        for room in self.reservations:
+            print(room.get_details())
+
 
 # Define the main function
 def main():
@@ -152,7 +181,8 @@ def main():
         print("1. Search available rooms")
         print("2. Make a reservation")
         print("3. Cancel a reservation")
-        print("4. Exit")
+        print("4. Show report")  # New menu option
+        print("5. Exit")
         choice = input("Enter your choice: ")
 
         if choice == "1":
@@ -164,6 +194,8 @@ def main():
             room_number = int(input("Enter the room number to cancel: "))
             hotel.cancel_reservation(room_number)
         elif choice == "4":
+            hotel.show_report()  # Display the report
+        elif choice == "5":
             break
         else:
             print("Invalid choice, please try again.")
