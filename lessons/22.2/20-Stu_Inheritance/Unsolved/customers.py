@@ -29,7 +29,7 @@ class Customer(Reservation):
     def __init__(self, first_name, last_name, nights, room_type):
         """
         Initializes the Customer class with customer details
-        and attempts to book a room.
+          and attempts to book a room.
 
         Args:
             first_name (str): The first name of the customer.
@@ -76,7 +76,8 @@ class Customer(Reservation):
                 # TODO: to less than or equal to 0.
                 if self.room['available'] <= 0:
                     # Print a message if the room is not available.
-                    print(f"Sorry, there are no {self.room_type} rooms available.")
+                    print(f"Sorry, there are no {self.room_type}"
+                          f" rooms available.")
                     return False
                 return True
         print(f"Sorry, {self.room_type} is not a valid room type.")
@@ -107,7 +108,7 @@ class Customer(Reservation):
         Saves the customer data to a CSV file.
 
         The data includes the customer's first name,
-        last name, number of nights,
+          last name, number of nights,
         room type, and the total cost of the stay.
         """
         # TODO: Calculate the total cost of the stay.
@@ -122,17 +123,17 @@ class Customer(Reservation):
                           newline='', encoding='utf-8') as file:
                     writer = csv.writer(file)
                     writer.writerow(["First Name", "Last Name", "Room",
-                                     "Nights", "Total"])
+                                    "Nights", "Total"])
 
             with open(CUSTOMER_FILE_PATH, 'a',
                       newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
                 # Write the customer data to the CSV file.
                 writer.writerow([self.first_name,
-                                 self.last_name,
-                                 self.room_type,
-                                 self.nights,
-                                 total_cost])
+                                self.last_name,
+                                self.room_type,
+                                self.nights,
+                                total_cost])
         except OSError as e:
             print("An unexpected error occurred while "
                   f"saving customer data: {e}")

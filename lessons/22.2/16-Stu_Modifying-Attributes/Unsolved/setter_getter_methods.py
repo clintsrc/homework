@@ -38,7 +38,11 @@ import json
 
 class AccountCreation:
     """A class that creates an email and password for a user."""
-    def __init__(self, email=None, password=None, first_name=None, last_name=None):
+    def __init__(self,
+                 email=None,
+                 password=None,
+                 first_name=None,
+                 last_name=None):
         self.__email = email  # Non-public attributes
         self.__password = password
         self.__first_name = first_name

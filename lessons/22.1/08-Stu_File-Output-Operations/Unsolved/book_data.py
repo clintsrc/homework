@@ -29,7 +29,7 @@ and then reads the data from the file and prints it to the console."""
 # TODO: Import the functions from the CSV_handler module.
 # Import the Path module from the pathlib library.
 from pathlib import Path
-from csv_handler import append_to_csv, read_csv
+from csv_handler import add_csv, read_csv
 
 # Get the current script's directory
 current_directory = Path(__file__).parent
@@ -64,7 +64,7 @@ while True:
 new_book_data = [book_title, author, quantity, price]
 
 # TODO: Call the function and pass the file path and the new book data.
-append_to_csv(file_out_path, new_book_data)
+add_csv(file_out_path, new_book_data)
 
 # TODO: Call the read function to see if the new data has been added properly.
 print("Updated book sales data:")

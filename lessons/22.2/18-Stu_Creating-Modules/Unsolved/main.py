@@ -30,31 +30,31 @@ from bank_account import SavingsAccount
 starting_balance = float(input("Enter your starting balance: $"))
 
 # TODO: Create an instance of the `SavingsAccount` class
-# TODO: Set the user's starting balance.
+# TODO: Set he users starting balance.
 account = SavingsAccount(starting_balance)
 
 # TODO: Prompt the user to deposit their paycheck.
-paycheck = float(input("Enter the amount of your paycheck to deposit: $"))
+pay = float(input("Enter the amount of your paycheck to deposit: $"))
 
 # Display the amount the user wants to deposit.
-print(f"I will deposit ${paycheck:,.2f} into your account.")
+print(f"I will deposit ${pay:,.2f} into your account.")
 
 # TODO: Pass the user's pay to the deposit method
 # TODO: using the instance of the SavingsAccount class.
-account.deposit(paycheck)
+account.deposit(pay)
 
 # TODO: Display the balance of the account to two decimal places and thousands.
 print(f"Your current balance is ${account.get_balance():,.2f}")
 
 # TODO: Prompt the user to withdraw an amount.
-withdrawal_amount = float(input("Enter the amount you want to withdraw: $"))
+cash = float(input("Enter the amount you want to withdraw: $"))
 
 # Display the amount the user wants to withdraw.
-print(f"I will withdraw ${withdrawal_amount:,.2f} from your account.")
+print(f"I will withdraw ${cash:,.2f} from your account.")
 
 # TODO: Pass the user's amount they want to the withdraw method
 # TODO: using the instance of the SavingsAccount class.
-account.withdraw(withdrawal_amount)
+account.withdraw(cash)
 
 # TODO: Display the balance of the account to two decimal places and thousands.
 print(f"Your current balance is ${account.get_balance():,.2f}")

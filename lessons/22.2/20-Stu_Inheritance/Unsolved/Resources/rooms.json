@@ -3,7 +3,7 @@
         {
             "type": "single",
             "price": 99,
-            "available": 7
+            "available": 6
         },
         {
             "type": "double",
@@ -18,7 +18,7 @@
         {
             "type": "king",
             "price": 209,
-            "available": 1
+            "available": 0
         }
     ]
 }

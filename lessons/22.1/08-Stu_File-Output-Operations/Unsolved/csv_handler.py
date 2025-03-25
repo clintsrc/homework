@@ -1,7 +1,7 @@
 import csv
 
 # TODO: Create a function that appends data to the end of the book sales data.
-def append_to_csv(file, book_data):
+def add_csv(file, book_data):
     """Create a CSV file and write the header row and data to it.
 
     Args:
