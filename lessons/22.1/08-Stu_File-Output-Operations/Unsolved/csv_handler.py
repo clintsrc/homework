@@ -2,11 +2,11 @@ import csv
 
 # TODO: Create a function that appends data to the end of the book sales data.
 def append_to_csv(file, book_data):
-    """Appends a row of data to the book sales CSV file.
+    """Create a CSV file and write the header row and data to it.
 
     Args:
     file (str): The path to the CSV file.
-    book_data (list): A single data row (book_title, author, quantity, price) to be written to the CSV file.
+    book_data (list): The data rows to be written to the CSV file.
     """
     # TODO: Use the with open statement to create a new CSV file.
     # TODO: Use utf-8 encoding to ensure the data is written correctly.

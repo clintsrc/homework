@@ -29,7 +29,7 @@ and then reads the data from the file and prints it to the console."""
 # TODO: Import the functions from the CSV_handler module.
 # Import the Path module from the pathlib library.
 from pathlib import Path
-from csv_handler import append_to_csv, read_csv  # Added necessary imports
+from csv_handler import append_to_csv, read_csv
 
 # Get the current script's directory
 current_directory = Path(__file__).parent
