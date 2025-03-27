@@ -23,66 +23,102 @@ A: Extend the PriceCalculator to handle more complex pricing rules or
     Principle.
 """
 
-from abc import ABC, abstractmethod
+class PriceCalculator:
+    """
+    A class responsible for calculating the price of an item.
+    """
 
-# TODO: Create an abstract class called Item.
-class Item(ABC):
-    """
-    Abstract base class for items in the shopping cart.
-    """
-    @abstractmethod
-    def calculate_total_price(self):
+    def __init__(self, base_price, shipping_fee=0, discount=0):
         """
-        Calculate the total price of the item.
-        """
-        pass
+        Initialize the price calculator with a base price,
+        shipping fee, and discount.
 
-# TODO: Update the PhysicalItem to inherit from the Item class.
-class PhysicalItem(Item):
-    """
-    Represents a physical item with a base price and shipping fee.
-    """
-    def __init__(self, base_price, shipping_fee):
+        :param base_price: The base price of the item.
+        :param shipping_fee: The shipping fee for the item, default is 0.
+        :param discount: The discount applied to the item, default is 0.
+        """
         self.base_price = base_price
         self.shipping_fee = shipping_fee
-
-    def calculate_total_price(self):
-        """
-        Calculate the total price of the physical item.
-        :return: Total price including shipping fee.
-        """
-        return self.base_price + self.shipping_fee
-
-# TODO: Update the DigitalItem to inherit from the Item class.
-class DigitalItem(Item):
-    """
-    Represents a digital item with only a base price.
-    """
-    def __init__(self, base_price):
-        self.base_price = base_price
-
-    def calculate_total_price(self):
-        """
-        Calculate the total price of the digital item.
-        :return: Total price without any additional fees.
-        """
-        return self.base_price
-
-# TODO: Update the GiftCard classes to inherit from the Item class.
-class GiftCard(Item):
-    """
-    Represents a gift card with a base price and discount.
-    """
-    def __init__(self, base_price, discount):
-        self.base_price = base_price
         self.discount = discount
 
     def calculate_total_price(self):
         """
-        Calculate the total price of the gift card after applying the discount.
-        :return: Total price after discount.
+        Calculate the total price of the item after applying the shipping
+        fee and discount.
+
+        :return: The total price of the item.
         """
-        return self.base_price - self.discount
+        return self.base_price + self.shipping_fee - self.discount
+
+
+# TODO: Create a PhysicalItem class that contains a PriceCalculator instance.
+class PhysicalItem:
+    """
+    Represents a physical item in the cart.
+    """
+
+    def __init__(self, price_calculator):
+        """
+        Initialize the physical item with a PriceCalculator instance.
+
+        :param price_calculator: The PriceCalculator instance for this item.
+        """
+        self.price_calculator = price_calculator
+
+    def calculate_total_price(self):
+        """
+        Calculate the total price using the PriceCalculator.
+
+        :return: The total price of the physical item.
+        """
+        return self.price_calculator.calculate_total_price()
+
+
+# TODO: Create a DigitalItem class that contains a PriceCalculator instance.
+class DigitalItem:
+    """
+    Represents a digital item in the cart.
+    """
+
+    def __init__(self, price_calculator):
+        """
+        Initialize the digital item with a PriceCalculator instance.
+
+        :param price_calculator: The PriceCalculator instance for this item.
+        """
+        self.price_calculator = price_calculator
+
+    def calculate_total_price(self):
+        """
+        Calculate the total price using the PriceCalculator.
+
+        :return: The total price of the digital item.
+        """
+        return self.price_calculator.calculate_total_price()
+
+
+# TODO: Create a GiftCard class that contains a PriceCalculator instance.
+class GiftCard:
+    """
+    Represents a gift card in the cart.
+    """
+
+    def __init__(self, price_calculator):
+        """
+        Initialize the gift card with a PriceCalculator instance.
+
+        :param price_calculator: The PriceCalculator instance for this item.
+        """
+        self.price_calculator = price_calculator
+
+    def calculate_total_price(self):
+        """
+        Calculate the total price using the PriceCalculator.
+
+        :return: The total price of the gift card.
+        """
+        return self.price_calculator.calculate_total_price()
+
 
 class ShoppingCart:
     """
@@ -109,18 +145,25 @@ class ShoppingCart:
         """
         return sum(item.calculate_total_price() for item in self.items)
 
+
 # Test the ShoppingCart with different items
 if __name__ == "__main__":
     cart = ShoppingCart()
 
-    # TODO: Add a physical item with a shipping fee to the cart
-    cart.add_item(PhysicalItem(100, 10))  # Base price: $100, Shipping fee: $10
+    # Add a physical item with a shipping fee
+    laptop_price_calculator = PriceCalculator(1000, 50)
+    laptop = PhysicalItem(laptop_price_calculator)
+    cart.add_item(laptop)
 
-    # TODO: Add a digital item with no shipping fee to the cart
-    cart.add_item(DigitalItem(50))  # Base price: $50
+    # Add a digital item with no shipping fee
+    ebook_price_calculator = PriceCalculator(20)
+    ebook = DigitalItem(ebook_price_calculator)
+    cart.add_item(ebook)
 
-    # TODO: Add a gift card with a discount to the cart
-    cart.add_item(GiftCard(30, 5))  # Base price: $30, Discount: $5
+    # Add a gift card with a discount
+    gift_card_price_calculator = PriceCalculator(100, discount=10)
+    gift_card = GiftCard(gift_card_price_calculator)
+    cart.add_item(gift_card)
 
     # Calculate and print the total cost of the cart
     total = cart.calculate_total()
